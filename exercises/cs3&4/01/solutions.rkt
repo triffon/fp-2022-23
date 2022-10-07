@@ -1,7 +1,5 @@
 #lang racket
 
-(define id (lambda (x) x))
-
 ; 1. За дадено естествено число n намира n+1.
 (define (succ x) (+ x 1))
 
@@ -30,9 +28,9 @@
 ; 6. Намира сумата на 2 естествени числа.
 ; Използвайте succ и pred.
 (define (sum x y)
-  (if (= x 0)
+  (if (zero? x)
     y
-    (succ (sum (pred x) y))))
+    (sum (pred x) (succ y))))
 
 ; 7. намира произведението на 2 естествени числа.
 ; Използвайте sum и pred.
@@ -60,8 +58,9 @@
 ; 11. За дадена едноаргументна функция f и число n,
 ; връща n-тото прилагане на f. Тоест f^n.
 ; Пример: ((repeat f 3) x) -> (f (f (f x))) за някоя f
+(define id (lambda (x) x))
 (define (repeat f n)
   (if (zero? n)
     id
     (lambda (x)
-      (f ((repeat f (- n 1)) x)))))
+      ((repeat f (- n 1)) (f x)))))
