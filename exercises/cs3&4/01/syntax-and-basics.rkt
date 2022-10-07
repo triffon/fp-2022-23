@@ -210,10 +210,11 @@
 (define (flip f) 'undefined)
 
 ; 10. За дадени едноаргументни функции f и g
-; връща композицията им (f.f)
+; връща композицията им (f.g)
+; Пример: ((compose f g) x) -> (f (g x))
 (define (compose f g) 'undefined)
 
 ; 11. За дадена едноаргументна функция f и число n,
 ; връща n-тото прилагане на f. Тоест f^n.
-; Пример: (repeat f 3) x) -> (f (f (f x))) за някоя f
+; Пример: ((repeat f 3) x) -> (f (f (f x))) за някоя f
 (define (repeat f n) 'undefined)
