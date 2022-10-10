@@ -19,7 +19,7 @@
 ;; вместо cond израз
 ;; (define (fibonacci number)
 ;;   (if (< number 2)
-;; 	  1
-;;     (+
-;;       (fibonacci (- number 1))
-;;       (fibonacci (- number 2)))))
+;;       1
+;;       (+
+;;         (fibonacci (- number 1))
+;;         (fibonacci (- number 2)))))
