@@ -6,5 +6,5 @@
 
 # Допълнителни материали
 
-:arrow_right: [Как да форматираме кода си в Scheme](./additional-materials/scheme-formatting.md)
+:arrow_right: [Как да форматираме кода си в Scheme](./additional-materials/scheme-formatting.md)  
 :arrow_right: [Как да работим с Racket във VS Code](./additional-materials/scheme-vscode.md)
