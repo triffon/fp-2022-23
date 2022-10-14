@@ -84,24 +84,22 @@
 
 ; Използвайки вложена дефиниция:
 (define (factorial-iter n)
-  (define (iter product counter)
-    ; тук на практика ползваме помощни аргументи като
-    ; променливи, до които крайният потребител няма достъп
-    (if (> counter n)
+  (define (iter product i)
+    ; тук ползваме допълнителния аргумент като променлива
+    (if (zero? i)
       product
-      (iter
-        (* counter product)
-        (+ counter 1))))
-  (iter 1 1))
+      (iter (* i product)
+            (- i 1))))
+  (iter 1 n))
 
 ; Вече изчислителния процес изглежда така:
 ;(factorial-iter 5)
-;(iter   1 1)
-;(iter   1 2)
-;(iter   2 3)
-;(iter   6 4)
-;(iter  24 5)
-;(iter 120 6)
+;(iter 1   5)
+;(iter 5   4)
+;(iter 20  3)
+;(iter 60  2)
+;(iter 120 1)
+;(iter 120 0)
 ;120
 
 ; време: O(n)
@@ -133,12 +131,12 @@
 ; Така няма да трябва да ги изчисляваме всеки път
 ; когато ни потрябват.
 (define (fib-iter n)
-  (define (iter n1 n2 index)
-    (if (= index 0)
-      n1
+  (define (iter n1 n2 i)
+    (if (zero? i)
+      n2
       (iter n2
             (+ n1 n2)
-            (- index 1))))
+            (- i 1))))
   (iter 0 1 n))
 
 ; Нека видим разликата във времето за изпълнение:
