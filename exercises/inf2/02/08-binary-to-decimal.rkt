@@ -25,8 +25,8 @@
 	(helper number 0 0))
 
 ;; (binary-to-decimal-iter 101) =
-;; (helper  101  1  0) =
-;; (helper   10  2  2) =
-;; (helper    1  3  2) =
-;; (helper    0  4 10) =
+;; (helper  101  0  0) =
+;; (helper   10  1  2) =
+;; (helper    1  2  2) =
+;; (helper    0  3 10) =
 ;; 5
