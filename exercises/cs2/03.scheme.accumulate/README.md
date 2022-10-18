@@ -34,7 +34,7 @@
 ### [Зад 10 `maximum-digit-sum`][maximum-digit-sum]
 Най-голямата сума на цифрите на цяло число от интервала [a, b].
 
-### [Зад 11 `count-pairs-gcd`][count-pairs-gcd] **за домашно (4т.)**
+### [Зад 11 `count-pairs-gcd`][count-pairs-gcd]
 Броят на наредените двойки цели числа (`x`,`y`) от интервала [a,b], които имат най-голям общ делител равен на `n`.
 
 [newton-wiki]: https://en.wikipedia.org/wiki/Binomial_theorem
