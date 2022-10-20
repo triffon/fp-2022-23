@@ -116,15 +116,22 @@
 
     > ((compose succ 2*) 5) => 11
     ```
+  
+5. Дефинирайте функция `(repeat func n)`, която прави `n`-тата композиция на функцията `func` със себе си 
 
 ## Задачи с accumulate
 
-5. Дефинирайте функция `(double-factorial number)`, която изчислява $n!!$</br>  
+6. Дефинирайте функция `(double-factorial number)`, която изчислява $n!!$</br>  
     ![Double Factorial](./double-factorial.svg)
 
-6. Дефинирайте функция `(all? predicate? start end)` , която проверя дали всички цели числа в интервала $[start, end]$ изпълняват усовието `predicate`
+7. Дефинирайте функция `(all? predicate? start end)` , която проверя дали всички цели числа в интервала $[start, end]$ изпълняват усовието `predicate`
 
-7. Дефинирайте функция `(any? predicate? start end)`, която проверя дали някое цяло число в интервала $[start, end]$ изпълняват усовието `predicate`
+8. Дефинирайте функция `(any? predicate? start end)`, която проверя дали някое цяло число в интервала $[start, end]$ изпълняват усовието `predicate`
 
-8. Дефинирайте функция `(count predicate? start end)`, която брои колко от числата в интервала $[start, end]$ изпълняват условието `predicate`
+9. Дефинирайте функция `(count predicate? start end)`, която брои колко от числата в интервала $[start, end]$ изпълняват условието `predicate`
 
+10. Дефинирайте функция `(filter-accumulate predicate? operation null-value start end term next)`, която допълнително приема предикат `predicate?`, който определя дали елементът да бъде взет предвид в крайния резултат
+
+11. Препишете `count` от задача 8 с `filter-accumulate`
+
+12. Дефинирайте функция `(sum-divisors number)`, която смята сумата от делителите на числото $number$  
