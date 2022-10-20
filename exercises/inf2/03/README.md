@@ -89,7 +89,7 @@
     ```scheme
     (define (succ x) (+ x 1)) 
 
-    > (double succ 1) => 3
+    > (apply-twice succ 1) => 3
     ```
 
 2. Дефинирайте функция `(double func)`, която връща функция, прилагаща func два поредни пъти върху аргумента си
@@ -119,10 +119,12 @@
 
 ## Задачи с accumulate
 
-5. Дефинирайте функция `(double-factorial number)`, която изчислява $n!!$, използвайки дефинираната по-горе `accumulate`</br>  
-    ![Double Factorial](https://mathworld.wolfram.com/images/equations/DoubleFactorial/NumberedEquation1.svg)
+5. Дефинирайте функция `(double-factorial number)`, която изчислява $n!!$</br>  
+    ![Double Factorial](./double-factorial.svg)
 
-6. Дефинирайте функция `(all? predicate? start end)` , която проверя дали всички цели числа в интервала start end изпълняват усовието `predicate`
+6. Дефинирайте функция `(all? predicate? start end)` , която проверя дали всички цели числа в интервала $[start, end]$ изпълняват усовието `predicate`
 
-7. Дефинирайте функция `(any? predicate? start end)`, която проверя дали някое цяло число в интервала start end изпълняват усовието `predicate`
+7. Дефинирайте функция `(any? predicate? start end)`, която проверя дали някое цяло число в интервала $[start, end]$ изпълняват усовието `predicate`
+
+8. Дефинирайте функция `(count predicate? start end)`, която брои колко от числата в интервала $[start, end]$ изпълняват условието `predicate`
 
