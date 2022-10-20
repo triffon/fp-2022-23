@@ -79,3 +79,50 @@
 (define (power base exp)
   ???)
 ```
+
+---
+
+## Задачи
+
+1. Дефинирайте функция `(apply-twice func arg)`, която връща резултата от прилагането на функцията func 2 поредни пъти върху аргумента arg
+
+    ```scheme
+    (define (succ x) (+ x 1)) 
+
+    > (double succ 1) => 3
+    ```
+
+2. Дефинирайте функция `(double func)`, която връща функция, прилагаща func два поредни пъти върху аргумента си
+
+    ```scheme
+    (define (succ x) (+ x 1))
+
+    > ((double succ) 1) => 3
+    ```
+
+3. Дефинирайте функция `(flip f)`, която приема двуместна функция като аргумент и връща същата функция, но с разменени места на нейните аргументи
+
+    ```scheme
+    (define weird-minus (flip -))
+
+    > (weird-minus 2 3) => 1
+    ```
+
+4. Дефинирайте функция `(compose f g)`, която приема като аргументи две едноместни функции и връща като резултат нова функция, представляваща тяхната композиция $f ∘ g$
+
+    ```scheme
+    (define (succ x) (+ x 1))
+    (define (2* x) (* 2 x))
+
+    > ((compose succ 2*) 5) => 11
+    ```
+
+## Задачи с accumulate
+
+5. Дефинирайте функция `(double-factorial number)`, която изчислява $n!!$, използвайки дефинираната по-горе `accumulate`</br>  
+    ![Double Factorial](https://mathworld.wolfram.com/images/equations/DoubleFactorial/NumberedEquation1.svg)
+
+6. Дефинирайте функция `(all? predicate? start end)` , която проверя дали всички цели числа в интервала start end изпълняват усовието `predicate`
+
+7. Дефинирайте функция `(any? predicate? start end)`, която проверя дали някое цяло число в интервала start end изпълняват усовието `predicate`
+
