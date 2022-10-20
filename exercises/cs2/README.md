@@ -6,15 +6,24 @@
 
 ### Scheme
 1. Основи
-   [задачи.01], [решения.01], [код-от-часа.01]
+   <br />
+   [задачи.01] · [решения.01] · [код-от-часа.01]
 2. Рекурсия и итерация
-   [задачи.02], [решения.02], [код-от-часа.02]
+   <br />
+   [задачи.02] · [решения.02] · [код-от-часа.02]
+3. Accumulate и функции от по-висок ред
+   <br />
+   [задачи.03] · [решения.03] · [код-от-часа.03]
 
 
 [задачи.01]: 01.scheme.basics/
-[решения.01]: 01.scheme.basics/solutions/
+[решения.01-]: 01.scheme.basics/solutions/
 [код-от-часа.01]: 01.scheme.basics/class.01.rkt
 
 [задачи.02]: 02.scheme.rec-iter/
-[решения.02]: 02.scheme.rec-iter/solutions/
+[решения.02-]: 02.scheme.rec-iter/solutions/
 [код-от-часа.02]: 02.scheme.rec-iter/class.02.rkt
+
+[задачи.03]: 03.scheme.accumulate
+[решения.03-]: 03.scheme.accumulate/solutions/
+[код-от-часа.03-]: 03.scheme.accumulate/class.03.rkt
