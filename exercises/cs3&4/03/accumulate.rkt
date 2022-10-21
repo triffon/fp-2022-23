@@ -70,6 +70,8 @@
 
 ; 3. Проверява дали даден предикат е верен за всички числа
 ; в даден интервал.
+; Hint: вместо да ползвате директно and и or -
+; (define (and2 x y) (and x y))
 (define (for-all? from to p?) 'undefined)
 
 ; 4. Проверява дали някое число в даден интервал
@@ -89,6 +91,7 @@
 (define (meet-twice f g a b) 'undefined)
 
 ; 7. Обръща записа на дадено естествено число
+; Hint: (count-digits n) <=> (+ 1 (floor (log n 10)))
 (define (reverse-digits n) 'undefined)
 
 ; 8. Намира броя на палиндромите в интервала [a,b]
