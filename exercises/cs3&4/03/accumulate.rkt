@@ -37,13 +37,14 @@
 ; ползваме за повече неща.
 
 (define (interval-op from to op acc)
-  (if (>= from to)
+  (if (> from to)
     acc
     (interval-op
-      (- from 1)
+      (+ from 1)
       to
       op
       (op acc from))))
+
 
 ;===============;=========================================
 ;; З А Д А Ч И ;;
