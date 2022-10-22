@@ -67,17 +67,21 @@
       null-value
       (accumulate-iter operation (operation null-value (term start)) (next start) end term next)))
 
+;; примери с accumulate
+(define (identity x) x)
+(define (succ x) (+ x 1))
+
 (define (sum-interval start end)
-  ???)
+  (accumulate + 0 start end identity succ))
 
 (define (prod-interval start end)
-  ???)
+  (accumulate * 1 start end identity succ))
 
 (define (factorial number)
-  ???)
+  (accumulate * 1 1 number identity succ))
 
 (define (power base exp)
-  ???)
+  (accumulate * 1 1 exp identity succ))
 ```
 
 ---
@@ -119,6 +123,12 @@
   
 5. Дефинирайте функция `(repeat func n)`, която прави `n`-тата композиция на функцията `func` със себе си 
 
+    ```scheme
+    (define (succ x) (+ x 1))
+
+    > ((repeat succ 5) 1) => 6
+    ```
+
 ## Задачи с accumulate
 
 6. Дефинирайте функция `(double-factorial number)`, която изчислява $n!!$</br>  
@@ -126,9 +136,23 @@
 
 7. Дефинирайте функция `(all? predicate? start end)` , която проверя дали всички цели числа в интервала $[start, end]$ изпълняват усовието `predicate`
 
+    ```scheme
+    > (all? (lambda (x) (> x 5)) 1 10) => #f
+    > (all? (lambda (x) (> x 5)) 6 10) => #t
+    ```
+
 8. Дефинирайте функция `(any? predicate? start end)`, която проверя дали някое цяло число в интервала $[start, end]$ изпълняват усовието `predicate`
 
+    ```scheme
+    > (any? (lambda (x) (> x 5)) 1 5) => #f
+    > (any? (lambda (x) (> x 5)) 1 6) => #t
+    ```
+
 9. Дефинирайте функция `(count predicate? start end)`, която брои колко от числата в интервала $[start, end]$ изпълняват условието `predicate`
+
+    ```scheme
+    > (count odd? 1 10) => 5
+    ```
 
 10. Дефинирайте функция `(filter-accumulate predicate? operation null-value start end term next)`, която допълнително приема предикат `predicate?`, който определя дали елементът да бъде взет предвид в крайния резултат
 
