@@ -48,11 +48,6 @@
 ### [Зад 11 `automorphic?`][automorphic?]
 Дали е автоморфно числото? Едно число е _автоморфно_, ако квадратът му завършва на него.
 
-### [Зад 12 `prime?`][prime?]
-Дали числото е просто?
-
-> Дадено цяло число n е просто, ако не се дели на никое от числата между 2 и n-1 (даже [от 2 до √n][primality-test]).
-
 ```scheme
 (automorphic? 6) -> #t
 (automorphic? 5) -> #t
@@ -60,6 +55,11 @@
 (automorphic? 4) -> #f
 (automorphic? 11) -> #f
 ```
+
+### [Зад 12 `prime?`][prime?]
+Дали числото е просто?
+
+> Дадено цяло число n е просто, ако не се дели на никое от числата между 2 и n-1 (даже [от 2 до √n][primality-test]).
 
 [download]: https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Ftriffon%2Ffp-2022-23%2Ftree%2Fmain%2Fexercises%2Fcs2%2F02.scheme.rec-iter
 [solutions]: ./solutions
