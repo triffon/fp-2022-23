@@ -56,10 +56,10 @@
       (else (fasterpow-iter (- i 1)
                             (* x result))))
     )
-  
+
   (fasterpow-iter n 1))
 
-    
+
 
 
 

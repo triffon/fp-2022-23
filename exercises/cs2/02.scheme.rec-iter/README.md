@@ -1,4 +1,4 @@
-# Рекурсия и итерация (упр 2)
+# 02. Рекурсия и итерация
 
 #### [Сваляне на задачите][download]
 
@@ -61,7 +61,7 @@
 (automorphic? 11) -> #f
 ```
 
-[download]: https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Fstainlesspot%2Ffp-2022-23%2Ftree%2Fmain%2Fexercises%2Fcs2%2F02.scheme.rec-iter
+[download]: https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Ftriffon%2Ffp-2022-23%2Ftree%2Fmain%2Fexercises%2Fcs2%2F02.scheme.rec-iter
 [solutions]: ./solutions
 [#b]: http://people.csail.mit.edu/jaffer/r5rs/Syntax-of-numerical-constants.html
 [primality-test]: https://en.wikipedia.org/wiki/Primality_test
