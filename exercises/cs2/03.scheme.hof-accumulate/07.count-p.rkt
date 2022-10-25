@@ -4,7 +4,7 @@
 
 (require "common.03.rkt")
 
-;### Зад 9
+;### Зад 7
 ; Броят на числата, удовлетворяващи предиката `pred?` сред числата `a`, `(next a)`, `(next (next a))`, ..., `b`.
 (define (count-p pred? a b next)
   'тук)
