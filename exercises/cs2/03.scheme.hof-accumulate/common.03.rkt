@@ -59,7 +59,7 @@
   (define (term x) 1)
   (accumulate-rev + 0 n 0 term next))
 
-(count-digits 123)
+;(count-digits 123)
 
 
 
