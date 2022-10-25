@@ -26,4 +26,4 @@
 
 [задачи.03]: 03.scheme.hof-accumulate
 [решения.03-]: 03.scheme.hof-accumulate/solutions/
-[код-от-часа.03-]: 03.scheme.hof-accumulate/class.03.rkt
+[код-от-часа.03]: 03.scheme.hof-accumulate/class.03.rkt
