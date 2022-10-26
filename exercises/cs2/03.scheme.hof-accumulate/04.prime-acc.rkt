@@ -4,7 +4,7 @@
 
 (require "common.03.rkt")
 
-;### Зад 6
+;### Зад 4
 ; Имплементирайте `prime?` чрез `accumulate` или `accumulate-i`.
 (define (prime?-acc n)
   'тук)
