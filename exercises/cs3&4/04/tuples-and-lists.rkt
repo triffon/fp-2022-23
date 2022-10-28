@@ -133,7 +133,3 @@
 ; Пример: (foldl* - 0 '(1 2 3 4)) -> -10
 (define (foldl* op acc lst) 'undefined)
 
-; 12. Като foldl но рекурсивно
-; Пример: (foldr* + 0 '(1 2 3 4)) -> -2
-(define (foldr* op acc lst) 'undefined)
-
