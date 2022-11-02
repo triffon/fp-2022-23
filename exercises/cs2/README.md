@@ -14,6 +14,9 @@
 3. Accumulate и функции от по-висок ред
    <br />
    [задачи.03] · [решения.03] · [код-от-часа.03]
+3. Списъци
+   <br />
+   [задачи.04] · [решения.04] · [код-от-часа.04]
 
 
 [задачи.01]: 01.scheme.basics/
@@ -27,3 +30,7 @@
 [задачи.03]: 03.scheme.hof-accumulate
 [решения.03-]: 03.scheme.hof-accumulate/solutions/
 [код-от-часа.03]: 03.scheme.hof-accumulate/class.03.rkt
+
+[задачи.04]: 04.scheme.lists
+[решения.04-]: 04.scheme.lists/solutions/
+[код-от-часа.04-]: 04.scheme.lists/class.04.rkt
