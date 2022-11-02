@@ -1,6 +1,8 @@
 # 04. Списъци
 
-#### [Сваляне на задачите](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Ftriffon%2Ffp-2022-23%2Ftree%2Fmaster%2Fexercises%2F6%2F04.scheme.lists)
+Полезни графики и обяснения се намират в упражненията на [inf2/04](https://github.com/triffon/fp-2022-23/blob/main/exercises/inf2/04/README.md) и [inf3/week4.md](https://github.com/triffon/fp-2022-23/blob/main/exercises/inf3/week4.md#%D1%81%D0%BF%D0%B8%D1%81%D1%8A%D1%86%D0%B8).
+
+#### [Сваляне на задачите](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Ftriffon%2Ffp-2022-23%2Ftree%2Fmain%2Fexercises%2Fcs2%2F04.scheme.lists)
 
 > Вградените в R5RS функции в бъдеще може да ги ползвате наготово, но само ако си ги напишете този път.
 
