@@ -121,11 +121,13 @@
 
 ; 5. Намира броя на елементите в дълбокия списък lst.
 ; Тоест lst може да има произволни нива на вложеност.
+; Пример: (count-atoms '((1 2 3 (4)) (5 ((6))) 7) ) -> 7
 (define (count-atoms lst) 'undefined)
 
 ; 6. Връща наредена двойка (fst . snd), където
 ; fst са елементите за които p? е истина
 ; и snd са тези за които p? е лъжа
+; Пример: (partition* even? '(1 2 3 4 5)) -> ((2 4) 1 3 5)
 (define (partition* p? lst) 'undefined)
 
 ; Използвайте apply:
@@ -134,9 +136,11 @@
 (define (avg h . t) 'undefined)
 
 ; 8. Композиция на на много едноаргументни функции
+; Пример: ((compose-all (^2) succ) 5) -> 36
 (define (compose-all f . gs) 'undefined)
 
 ; 9. Конюнкция на много едноместни предикати
+; Пример: ((conjoint-all even? >10) 4) -> #t
 (define (conjoint-all p? . preds) 'undefined)
 
 ; 10. Като map на много аргументи, но трябва да работи за
