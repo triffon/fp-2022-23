@@ -33,4 +33,4 @@
 
 [задачи.04]: 04.scheme.lists
 [решения.04-]: 04.scheme.lists/solutions/
-[код-от-часа.04-]: 04.scheme.lists/class.04.rkt
+
