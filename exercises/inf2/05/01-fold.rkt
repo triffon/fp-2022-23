@@ -5,7 +5,7 @@
       null-value
       (operation (car lst) (my-foldr operation null-value (cdr lst)))))
 
-;; foldl in racket
+;; foldl as defined in racket
 (define (my-foldl operation null-value lst)
   (if (null? lst)
       null-value
