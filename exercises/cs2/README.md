@@ -28,9 +28,9 @@
 [код-от-часа.02]: 02.scheme.rec-iter/class.02.rkt
 
 [задачи.03]: 03.scheme.hof-accumulate
-[решения.03-]: 03.scheme.hof-accumulate/solutions/
+[решения.03]: 03.scheme.hof-accumulate/solutions/
 [код-от-часа.03]: 03.scheme.hof-accumulate/class.03.rkt
 
 [задачи.04]: 04.scheme.lists
 [решения.04-]: 04.scheme.lists/solutions/
-[код-от-часа.04-]: 04.scheme.lists/class.04.rkt
+[код-от-часа.04]: 04.scheme.lists/class.04.rkt

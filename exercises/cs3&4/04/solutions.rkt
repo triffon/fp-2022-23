@@ -97,9 +97,8 @@
            (cdr lst))))
 
 ; 12. Като foldl но рекурсивно
-; Пример: (foldr* + 0 '(1 2 3 4)) -> -2
-(define (foldr* op acc lst)
+; Пример: (foldl* + 0 '(1 2 3 4)) -> -2
+(define (foldl* op acc lst)
   (if (null? lst)
     acc
-    (op (car lst)
-        (foldr* op acc (cdr lst)))))
+    (foldl* op (op (car lst) acc) (cdr lst))))
