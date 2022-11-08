@@ -4,7 +4,10 @@
 ;### Зад 18
 ; Дали списък е сортиран?
 (define (sorted? l)
-  'тук)
+  (or (null? l)
+      (null? (cdr l))
+      (and (<= (car l) (cadr l))
+           (sorted? (cdr l)))))
 
 
 (run-tests
