@@ -17,6 +17,9 @@
 3. Списъци
    <br />
    [задачи.04] · [решения.04] · [код-от-часа.04]
+3. Fold. Дълбоки списъци
+   <br />
+   [задачи.05] · [решения.05] · [код-от-часа.05]
 
 
 [задачи.01]: 01.scheme.basics/
@@ -34,3 +37,7 @@
 [задачи.04]: 04.scheme.lists
 [решения.04-]: 04.scheme.lists/solutions/
 [код-от-часа.04]: 04.scheme.lists/class.04.rkt
+
+[задачи.05]: 05.scheme.fold-deeplists
+[решения.05-]: 05.scheme.fold-deeplists/solutions/
+[код-от-часа.05-]: 05.scheme.fold-deeplists/class.05.rkt
