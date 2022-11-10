@@ -23,4 +23,4 @@
                     (list (length group) (car group)))
                 (group-consecutive lst))))
 
-;; (look-and-say '(1 1 2 3 3))    ;; => ‘(2 1 1 2 2 3)
+;; (look-and-say '(1 1 2 3 3))    ;; => '(2 1 1 2 2 3)
