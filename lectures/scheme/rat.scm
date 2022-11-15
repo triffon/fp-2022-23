@@ -7,8 +7,12 @@
              (d1 (quotient d g)))
         (cons 'rat (if (> d1 0) (cons n1 d1) (cons (- n1) (- d1)))))))
 
-(define get-numer cadr)
-(define get-denom cddr)
+(define (check-rat f)
+  (lambda (p)
+    (if (rat? p) (f p) (/ 1 0))))
+
+(define get-numer (check-rat cadr))
+(define get-denom (check-rat cddr))
 (define (rat? p) (and (pair? p)
                       (eq? (car p) 'rat)
                       (let ((r (cdr p)))
