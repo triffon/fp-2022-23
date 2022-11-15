@@ -2,10 +2,17 @@
 
 (define (make-rat n d)
   (if (= d 0) (/ n d)
-      (cons n d)))
+      (let* ((g (gcd n d))
+             (n1 (quotient n g))
+             (d1 (quotient d g)))
+        (if (> d1 0) (cons n1 d1) (cons (- n1) (- d1))))))
+
 (define get-numer car)
 (define get-denom cdr)
-(define (rat? r) (and (pair? r) (number? (car r)) (number? (cdr r))))
+(define (rat? r) (and (pair? r)
+                      (number? (car r))
+                      (positive? (cdr r))
+                      (= (gcd (car r) (cdr r)) 1)))
 
 (define (*rat p q)
   (make-rat (* (get-numer p) (get-numer q))
