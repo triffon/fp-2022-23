@@ -1,5 +1,4 @@
-(load "lists.scm")
-(load "highorder.scm")
+(load "apply.scm")
 
 (define (all? p? l)
 ;  (null? (filter (lambda (x) (not (p? x))) l)))
@@ -56,4 +55,4 @@
   (apply + (map * v1 v2)))
 
 (define (mult-matrices m1 m2)
-  (map (lambda (row) (map (lambda (col) (mult-matrices row col))  (transpose m2)) m1)))
+  (map (lambda (row) (map (lambda (col) (mult-vectors row col)) (transpose m2))) m1))

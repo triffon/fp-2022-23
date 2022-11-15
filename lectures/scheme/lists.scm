@@ -1,3 +1,5 @@
+(load "highorder.scm")
+
 (define lambda#t (lambda (x y) x))
 (define lambda#f (lambda (x y) y))
 
@@ -120,9 +122,6 @@
 (define (accumulate op nv a b term next)
   (foldr op nv (collect a b term next)))
 
-(define (id x) x)
-(define (1+ x) (+ x 1))
-
 (define (from-to a b)
   (collect a b id 1+))
 
@@ -148,12 +147,12 @@
 ;; (define (copy l)
 ;;   (if (null? l) '() (cons (car l) (copy    (cdr l)))))
 
-(define (accumulate op nv a b term next)
-  (if (> a b) nv (op (term a) (accumulate op nv (next a) b term next))))
+;; (define (accumulate op nv a b term next)
+;;  (if (> a b) nv (op (term a) (accumulate op nv (next a) b term next))))
 
-(define (accumulate-i op nv a b term next)
-  (if (> a b) nv
-      (accumulate-i op (op nv (term a)) (next a) b term next)))
+;;(define (accumulate-i op nv a b term next)
+;;  (if (> a b) nv
+;;      (accumulate-i op (op nv (term a)) (next a) b term next)))
 
 (define (rcons x y) (cons y x))
 
