@@ -15,6 +15,7 @@
         ('print r)
         ('* (make-rat (apply * (this 'get-numer) (map (lambda (p) (p 'get-numer)) params))
                       (apply * (this 'get-denom) (map (lambda (p) (p 'get-denom)) params))))
+        ('square (this '* this))
         (else (/ 1 0))))
   this))
           
