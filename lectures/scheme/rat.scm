@@ -1,4 +1,6 @@
-(define make-rat cons)
+(define (make-rat n d)
+  (if (= d 0) (/ n d)
+      (cons n d)))
 (define get-numer car)
 (define get-denom cdr)
 (define (rat? r) (and (pair? r) (number? (car r)) (number? (cdr r))))
