@@ -7,12 +7,16 @@
                       (n1 (quotient n g))
                       (d1 (quotient d g)))
                  (if (> d1 0) (cons n1 d1) (cons (- n1) (- d1)))))))
-    (lambda (prop)
+    (lambda (prop . params)
       (case prop
         ('rat? #t)
         ('get-numer (car r))
         ('get-denom (cdr r))
-        ('print r)))))
+        ('print r)
+        ('* (let ((other (car params)))
+              (make-rat (* (car r) (other 'get-numer))
+                        (* (cdr r) (other 'get-denom)))))
+        (else (/ 1 0))))))
           
 (define (check-rat f)
   (lambda (p)
@@ -22,9 +26,7 @@
 (define (get-denom r) (r 'get-denom))
 (define (rat? p) (r 'rat?))
 
-(define (*rat p q)
-  (make-rat (* (get-numer p) (get-numer q))
-            (* (get-denom p) (get-denom q))))
+(define (*rat p q) (p '* q))
 
 (define (+rat p q)
   (make-rat (+
