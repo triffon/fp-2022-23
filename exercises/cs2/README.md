@@ -38,3 +38,8 @@
 
 [код-от-часа.ep1]: ./exam1-prep/class.ep1.rkt
 [още-минали-контролни.ep1]: ./exam1-prep
+
+
+[задачи.06]: 06.scheme.data-structures
+[решения.06-]: 06.scheme.data-structures/solutions/
+[код-от-часа.06-]: 06.scheme.lists/class.06.rkt
