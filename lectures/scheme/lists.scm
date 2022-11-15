@@ -126,15 +126,15 @@
 (define (from-to a b)
   (collect a b id 1+))
 
-(define (map f l)
+(define (map1 f l)
   (if (null? l) '()
-      (cons (f (car l)) (map f (cdr l)))))
+      (cons (f (car l)) (map1 f (cdr l)))))
 
 (define (foldr op nv l)
   (if (null? l) nv
       (op (car l) (foldr op nv (cdr l)))))
 
-(define (map f l)
+(define (map1 f l)
   (foldr (lambda (h res) (cons (f h) res)) '() l))
 
 (define (filter p? l)
