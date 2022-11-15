@@ -13,9 +13,8 @@
         ('get-numer (car r))
         ('get-denom (cdr r))
         ('print r)
-        ('* (let ((other (car params)))
-              (make-rat (* (car r) (other 'get-numer))
-                        (* (cdr r) (other 'get-denom)))))
+        ('* (make-rat (apply * (car r) (map (lambda (p) (p 'get-numer)) params))
+                      (apply * (cdr r) (map (lambda (p) (p 'get-denom)) params))))
         (else (/ 1 0))))))
           
 (define (check-rat f)
