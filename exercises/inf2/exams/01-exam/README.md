@@ -1,10 +1,10 @@
 # Подготовка за Контролно 1
 
-### [Първо контролно (2021/22 г.)](https://learn.fmi.uni-sofia.bg/mod/page/view.php?id=259431)
+### [Първо контролно (2021/22 г.)](https://learn.fmi.uni-sofia.bg/mod/page/view.php?id=259431) [(Решения)](./exam-2021-2022/)
 
-### [Първо контролно (2019/20 г.)](https://learn.fmi.uni-sofia.bg/mod/url/view.php?id=218641)
+### [Първо контролно (2019/20 г.)](https://learn.fmi.uni-sofia.bg/mod/url/view.php?id=218641) [(Решения)](./exam-2019-2020/)
 
-### [Примерна тема за първо контролно (2018/19 г.)](https://learn.fmi.uni-sofia.bg/mod/page/view.php?id=110489)
+### [Примерна тема за първо контролно (2018/19 г.)](https://learn.fmi.uni-sofia.bg/mod/page/view.php?id=110489) [(Решения)](./exam-2018-2019/)
 
 ### Първо контролно (2015/16 г.)
 
