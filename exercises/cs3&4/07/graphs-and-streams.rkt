@@ -125,11 +125,11 @@
 
 ; Доста често ще искаме да взимаме елементи от поток.
 ; Функцията take за потоци:
-(define (stream-take n s)
+(define (stream-take* n s)
   (if (or (zero? n) (null? s))
     '()
     (cons (head s)
-          (stream-take (- n 1) (tail s)))))
+          (stream-take* (- n 1) (tail s)))))
 
 
 ;===============;=========================================
