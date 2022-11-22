@@ -46,6 +46,16 @@
 
 (define (cons#f x t) (and t (cons x t)))
 
+;; рекурсивно решение, само за ациклични графи
 (define (dfs-path u v g)
   (or (and (eqv? u v) (list u))
       (cons#f u (search-child u (lambda (w) (dfs-path w v g)) g))))
+
+;; итеративно решение с проверка за цикли
+(define (dfs-path u v g)
+  (define (dfs-search path)
+    (let ((current (car path)))
+      (or (and (eqv? current v) (reverse path))
+          (search-child current (lambda (w) (and (not (memv w path))
+                                                 (dfs-search (cons w path)))) g))))
+  (dfs-search (list u)))
