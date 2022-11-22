@@ -60,9 +60,38 @@
                                                  (dfs-search (cons w path)))) g))))
   (dfs-search (list u)))
 
+;; не проверява за цикли
+;; нивото е списък от върхове
 (define (bfs-path? u v g)
-  (define (bfs-level l)
-    (cond ((null? l) #f)
-          ((memv v l) #t)
-          (else (bfs-level (apply append (map (lambda (w) (children w g)) l))))))
+  (define (bfs-level level)
+    (and (not (null? level))
+         (or (memv v level)
+             (bfs-level (apply append (map (lambda (w) (children w g)) level))))))
   (bfs-level (list u)))
+
+;; проверява за цикли
+;; нивото е списък от пътища
+(define (bfs-path u v g)
+  ;; extend :: List V -> List (List V)
+  (define (extend path)
+    (map-children (car path) (lambda (u) (cons u path)) g))
+  ;; remains-acyclic? :: List V -> Bool
+  (define (remains-acyclic? path)
+    (not (memv (car path) (cdr path))))
+  ;; extend-acyclic :: List V -> List (List V)
+  (define (extend-acyclic path)
+    (filter remains-acyclic? (extend path)))
+  ;; target-path :: List V -> Bool
+  (define (target-path path)
+    (and (eqv? (car path) v) (reverse path)))
+  ;; bfs-level :: List (List V) -> List V
+  ;; map :: (A -> B) x List A -> List B
+  ;; A -> B == List V  -> List (List V)
+  ;; A == List V
+  ;; B == List (List V)
+  ;; (map extend-acyclic level) :: List (List (List V))
+  (define (bfs-level level)
+    (and (not (null? level))
+         (or (search target-path level)
+             (bfs-level (apply append (map extend-acyclic level))))))
+  (bfs-level (list (list u))))
