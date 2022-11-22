@@ -18,3 +18,12 @@
        (= (length t) 3)
        (tree? (cadr t))
        (tree? (caddr t)))))
+
+(define (depth-tree tree)
+  (if (empty-tree? tree) 0
+      (+ 1 (max (depth-tree (left-tree tree)) (depth-tree (right-tree tree))))))
+
+(define (member-tree x tree)
+  (and (not (empty-tree? tree)) (or (equal? x (root-tree tree))
+                                    (member-tree x (left-tree tree))
+                                    (member-tree x (right-tree tree)))))
