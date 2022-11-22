@@ -24,6 +24,6 @@
       (+ 1 (max (depth-tree (left-tree tree)) (depth-tree (right-tree tree))))))
 
 (define (member-tree x tree)
-  (and (not (empty-tree? tree)) (or (equal? x (root-tree tree))
+  (and (not (empty-tree? tree)) (or (and (equal? x (root-tree tree)) tree)
                                     (member-tree x (left-tree tree))
                                     (member-tree x (right-tree tree)))))
