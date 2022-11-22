@@ -29,8 +29,9 @@
                                     (member-tree x (right-tree tree)))))
 
 (define (path-tree x tree)
-  (cond ((empty-tree? tree) #f)
-        ((equal? x (root-tree tree)) (list x))
-        ((path-tree x (left-tree tree)) (cons (root-tree tree) (path-tree x (left-tree tree))))
-        ((path-tree x (right-tree tree)) (cons (root-tree tree) (path-tree x (right-tree tree))))
-        (else #f)))
+  (and (not (empty-tree? tree))
+       (or (and (equal? x (root-tree tree)) (list x))
+           (cons#f (root-tree tree) (or (path-tree x (left-tree tree))
+                                        (path-tree x (right-tree tree)))))))
+
+(define (cons#f x t) (and t (cons x t)))
