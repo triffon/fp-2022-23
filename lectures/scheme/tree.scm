@@ -1,9 +1,9 @@
 (define empty-tree '())
 (define empty-tree? null?)
 (define (make-tree root left right) (list root left right))
-(define root car)
-(define left cadr)
-(define right caddr)
+(define root-tree car)
+(define left-tree cadr)
+(define right-tree caddr)
 (define (make-leaf x) (make-tree x empty-tree empty-tree))
 
 (define t
