@@ -43,3 +43,9 @@
 
 (define (dfs-path? u v g)
   (or (eqv? u v) (search (lambda (w) (dfs-path? w v g)) (children u g))))
+
+(define (cons#f x t) (and t (cons x t)))
+
+(define (dfs-path u v g)
+  (or (and (eqv? u v) (list u))
+      (cons#f u (search-child u (lambda (w) (dfs-path w v g)) g))))
