@@ -59,3 +59,10 @@
           (search-child current (lambda (w) (and (not (memv w path))
                                                  (dfs-search (cons w path)))) g))))
   (dfs-search (list u)))
+
+(define (bfs-path? u v g)
+  (define (bfs-level l)
+    (cond ((null? l) #f)
+          ((memv v l) #t)
+          (else (bfs-level (apply append (map (lambda (w) (children w g)) l))))))
+  (bfs-level (list u)))

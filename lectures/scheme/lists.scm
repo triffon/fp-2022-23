@@ -32,10 +32,10 @@
   ;; (foldr (lambda (h r) (1+ r)) 0 l))
 
 ;; O(|l1|)
-(define (append l1 l2)
-  (if (null? l1) l2 (cons (car l1) (append (cdr l1) l2))))
+(define (append2 l1 l2)
+  (if (null? l1) l2 (cons (car l1) (append2 (cdr l1) l2))))
 
-(define (append l1 l2)
+(define (append2 l1 l2)
   (foldr cons l2 l1))
 
 ;; O(|l|)
