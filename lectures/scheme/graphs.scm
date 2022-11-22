@@ -41,4 +41,5 @@
                 (children u g)))
         (vertices g)))
 
-  
+(define (dfs-path? u v g)
+  (or (eqv? u v) (search (lambda (w) (dfs-path? w v g)) (children u g))))
