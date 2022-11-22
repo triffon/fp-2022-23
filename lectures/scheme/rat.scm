@@ -1,8 +1,12 @@
 (load "highorder.scm")
 
+;; използване на грешката при опит за вземане на car на низ
+;; като заместител на функция за прекратяване на програмата с грешка
+(define error car)
+
 (define (make-rat n d)
   (let ((r 
-           (if (= d 0) (/ n d)
+           (if (= d 0) (error "Деление на 0")
                (let* ((g (gcd n d))
                       (n1 (quotient n g))
                       (d1 (quotient d g)))
@@ -16,12 +20,12 @@
         ('* (make-rat (apply * (this 'get-numer) (map (lambda (p) (p 'get-numer)) params))
                       (apply * (this 'get-denom) (map (lambda (p) (p 'get-denom)) params))))
         ('square (this '* this))
-        (else (/ 1 0))))
+        (else (error "Непознато свойство"))))
   this))
           
 (define (check-rat f)
   (lambda (p)
-    (if (rat? p) (f p) (/ 1 0))))
+    (if (rat? p) (f p) (error "Опит за прилагане на функция към обект, който не е рационално число"))))
 
 (define (get-numer r) (r 'get-numer))
 (define (get-denom r) (r 'get-denom))
