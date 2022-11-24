@@ -63,7 +63,7 @@
 
 Вече можем да си дефинираме и `cons-stream` по следния начин:
 ```Racket
-(define cons-stream
+(define-syntax cons-stream
   (syntax-rules () ((cons-stream a b) (cons a (delay b))))
 )
 ```
