@@ -17,11 +17,11 @@
 
 ;; връща списък от ключовете в асоциативния списък
 (define (keys alist)
-  'TODO)
+  (map car alist))
 
 ;; връща списък от стойностите в асоциативния списък
-(define (values alist)
-  'TODO)
+(define (my-values alist)
+  (map cdr alist))
 ```
 
 ## Графи
