@@ -47,5 +47,5 @@
 [код-от-часа.06]: 06.scheme.data-structures/class.06.rkt
 
 [задачи.07]: ./07.scheme.assoc-graphs-streams
-[решения.07-]: 07.scheme.assoc-graphs-streams/solutions/
-[код-от-часа.07-]: 07.scheme.assoc-graphs-streams/class.07.rkt
+[решения.07]: 07.scheme.assoc-graphs-streams/solutions/
+[код-от-часа.07]: 07.scheme.assoc-graphs-streams/class.07.rkt
