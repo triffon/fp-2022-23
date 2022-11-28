@@ -131,15 +131,15 @@
 10. Дефинирайте функция `(search-child vertex pred? graph)`, която проверява дали съществува дете на върха `vertex` в подадения граф, което удовлетворява предиката `pred?`
 
     ```scheme
-    > (search-child 4 odd?  graph) ;; => 1
+    > (search-child 4 odd?  graph) ;; => '(1 3)
     > (search-child 4 even? graph) ;; => #f
     ```
 
 11. Дефинирайте функция `(parents vertex graph)`, която намира родителите на връхa `vertex` в подадения граф
 
     ```scheme
-    > (parents graph 3) ;; => '(2 3 4)
-    > (parents graph 5) ;; => '()
+    > (parents 3 graph) ;; => '(2 3 4)
+    > (parents 5 graph) ;; => '()
     ```
 
 12. Дефинирайте функция `(to-edges graph)`, която връща списък от всички ребра в подадения граф
