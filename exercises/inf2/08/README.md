@@ -131,7 +131,7 @@
 10. Дефинирайте функция `(search-child vertex pred? graph)`, която проверява дали съществува дете на върха `vertex` в подадения граф, което удовлетворява предиката `pred?`
 
     ```scheme
-    > (search-child 4 odd?  graph) ;; => 1
+    > (search-child 4 odd?  graph) ;; => '(1 3)
     > (search-child 4 even? graph) ;; => #f
     ```
 
