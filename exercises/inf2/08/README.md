@@ -138,8 +138,8 @@
 11. Дефинирайте функция `(parents vertex graph)`, която намира родителите на връхa `vertex` в подадения граф
 
     ```scheme
-    > (parents graph 3) ;; => '(2 3 4)
-    > (parents graph 5) ;; => '()
+    > (parents 3 graph) ;; => '(2 3 4)
+    > (parents 5 graph) ;; => '()
     ```
 
 12. Дефинирайте функция `(to-edges graph)`, която връща списък от всички ребра в подадения граф
@@ -167,8 +167,8 @@
 15. Дефинирайте функция `(contains-path? graph path)`, която проверява дали пътят `path` се съдържа в подадения граф
 
     ```scheme
-    > (contains-path? example-graph '(2 4 1 2 3)) ;; => #t
-    > (contains-path? example-graph '(2 4 5 2 3)) ;; => #f
+    > (contains-path? graph '(2 4 1 2 3)) ;; => #t
+    > (contains-path? graph '(2 4 5 2 3)) ;; => #f
     ```
 
 16. Дефинирайте функция `(extend-path graph path)`, която връща всички възможни "разширения" на пътя `path` в подадения граф (търсим прости пътища, т.е. без повторения на върхове)
@@ -195,10 +195,31 @@
         (3 2 3 4)
         (4 1 2 3)
         (5 6)
-        (6 5))
+        (6 5)))
 
     > (symmetric? graph)            ;; => #f
     > (symmetric? symmetric-graph)  ;; => #t
     ```
 
 19. Дефинирайте функция `(one-child-policy? graph)`, която проверява дали в дадения граф е изпълнено следното условие: "даден възел може да има повече от един наследник само ако е той е единствен наследник на родителя си"
+
+    ```scheme
+    (define compliant-graph
+      '((1 3)
+        (2 3)
+        (3 4 5)
+        (4 6)
+        (5 7)
+        (8)))
+
+    (define non-compliant-graph
+      '((1 3)
+        (2 3)
+        (3 4 5)
+        (4 6)
+        (5 7 8)
+        (8)))
+
+    > (one-child-policy? compliant-graph)
+    > (one-child-policy? non-compliant-graph)
+    ```
