@@ -131,8 +131,15 @@
 10. Дефинирайте функция `(search-child vertex pred? graph)`, която проверява дали съществува дете на върха `vertex` в подадения граф, което удовлетворява предиката `pred?`
 
     ```scheme
-    > (search-child 4 odd?  graph) ;; => '(1 3)
+    > (search-child 4 odd?  graph) ;; => 1
     > (search-child 4 even? graph) ;; => #f
+    ```
+
+    Алтернативно, дефинирайте функция `(filter-children vertex pred? graph)`, която връща списък от всички деца на върха `vertex`, които удовлетворяват предиката `pred?`
+
+    ```scheme
+    > (filter-children 4 odd?  graph) ;; => '(1 3)
+    > (filter-children 4 even? graph) ;; => '()
     ```
 
 11. Дефинирайте функция `(parents vertex graph)`, която намира родителите на връхa `vertex` в подадения граф
