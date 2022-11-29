@@ -79,3 +79,12 @@
 (define nats (cons-stream 0 (map-stream + nats ones)))
 
 (define fibs (cons-stream 0 (cons-stream 1 (map-stream + fibs (tail fibs)))))
+
+
+(define (not-divisible-by d)
+  (lambda (x) (> (remainder x d) 0)))
+
+(define (sieve s)
+  (cons-stream (head s) (sieve (filter-stream (not-divisible-by (head s)) (tail s)))))
+
+(define primes (sieve (from 2)))
