@@ -2,11 +2,143 @@
 
 # Scheme
 
+## Отложени операции (Promise)
+
+```scheme
+;; функция, която ще изчисли и върне някаква стойност в бъдещ
+;; момент от изпълнението на програмата;
+;; delay връша обещание (promise) за оценяване на <израз>
+(delay <израз>)
+
+;; форсира изчислението на <обещание> и връща оценката на <израз>, свързан с него
+(force <обещание>)
+
+;; връща обещание за оценяването на fact
+(define promise (delay (fact 30000)))
+
+;; изпълняваме отложената операция при нужда
+(force promise) 
+```
+
 ## Потоци
 
+Списък, чиито елементи се изчисляват отложено.  
+
+**Рекурсивна дефиниция**  
+Поток е празен списък $()$ или двойка $(h . t)$, където
+- $h$ — е произволен елемент (глава на потока)
+- $t$ — е обещание за поток (опашка на потока)
+
+```scheme
+;; примитиви за работа с потоци
+(define the-empty-stream '())
+(define empty-stream? null?)
+
+;; дефиниция на специална форма
+(define-syntax cons-stream
+  (syntax-rules () ((cons-stream h t) (cons h (delay t)))))
+
+(define head car)
+(define (tail s)(force (cdr s)))
+```
+
+```scheme
+;; поток от цели числа в интервала [a, b]
+(define (stream-range a b)
+  (if (> a b)
+      the-empty-stream
+      (cons-stream a (stream-range (+ a 1) b))))
+
+(define numbers (stream-range 1 100))
+(head numbers)          ;; => 1
+(head (tail numbers))   ;; => 2
+
+;; take приема поток като аргумент и връща списък
+(define (take n stream)
+  (if (or (< n 1) (empty-stream? stream))
+      the-empty-stream
+      (cons (head stream) (take (- n 1) (tail stream)))))
+
+(take 5 numbers) ;; => '(1 2 3 4 5)
+```
+
+### Безкрайни потоци
+
+```scheme
+;; отлагането на операции позволява създаването на безкрайни потоци
+(define (from n)
+  (cons-stream n (from (+ n 1))))
+
+;; безкраен поток от всички естествени числа
+(define nats (from 0))
+
+(take 5 nats) ;; => '(0 1 2 3 4)
+```
 ---
 
 ## Задачи
+
+1. Дефинирайте функция `(drop n stream)`, която връща нов поток, образуван от `stream` като премахнем първите $n$ елемента
+
+2. Дефинирайте функция `(add stream1 stream2)`, която връща нов поток, всеки елемент на който е сумата от елементите на `stream1` и `stream2` на съответната позиция
+
+    ```scheme
+    (define numbers (stream-range 1 1000))
+
+    > (take 5 (add numbers numbers)) ;; => '(2 4 6 8 10)
+    ```
+
+3. Дефинирайте функция `(stream-ref stream i)`, която връща елемента от потока `stream`, който се намира на позиция $i$
+
+    ```scheme
+    (define nats (from 0))
+
+    > (stream-ref nats 5) ;; => 5
+    ```
+
+4. Дефинирайте функция `(stream-map func stream)`, която прилага функцията `func` върху всеки елемент на потока `stream` и връща нов поток
+
+    ```scheme
+    (define nats (from 0))
+
+    > (take 5 (stream-map (lambda (x) (+ x 1)) nats))
+    ;; => '(1 2 3 4 5)
+    ```
+
+5. Дефинирайте функция `(stream-filter pred? stream)`, която връща поток с елементите на потока `stream`, които удовлетворяват предиката `pred?`
+
+    ```scheme
+    (define nats (from 0))
+
+    > (take 5 (stream-filter odd? nats))
+    ;; => '(1 3 5 7 9)
+    ```
+
+6. Дефинирайте функция `(stream-zip func stream1 stream2)`, която връща поток като прилага функцията `func` над съответните елементи на `stream1` и `stream2`
+
+    ```scheme
+    (define numbers (stream-range 1 1000))
+
+    > (take 5 (stream-zip + numbers numbers)) ;; => '(2 4 6 8 10)
+    ```
+
+7. Дефинирайте безкраен поток `ones`, който изглежда така: $[1,1,1,...]$
+
+
+
+7. Дефинирайте безкраен поток `fibonacci` от числата на Фибоначи
+
+    ```scheme
+    > (take 5 fibonacci) ;; => '(1 1 2 3 5)
+    ```
+
+8. Дефинирайте функция `(compose func x)`, която връща безкраен поток от вида $[x, f(x), f(f(x)), ...]$ 
+
+    ```scheme
+    (define squares (compose (lambda (x) (* x x)) 2))
+
+    > (take 5 squares) ;; => '(2 4 16 256 65536)
+    ```
 
 # Haskell
 
