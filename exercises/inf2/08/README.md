@@ -1,7 +1,5 @@
 # Упражнение 8
 
-🌟 [Анкета за обратна връзка](https://forms.gle/oEZmEQsuSm2jvqTj9) 🌟 
-
 ## Асоциативни списъци
 
 Асоциативните списъци (познати още като hash, map, dictionary) са списъци от наредени `(key . value)` двойки, в които на ключ съпоставяме някаква стойност.
@@ -227,6 +225,6 @@
         (5 7 8)
         (8)))
 
-    > (one-child-policy? compliant-graph)
-    > (one-child-policy? non-compliant-graph)
+    > (one-child-policy? compliant-graph)     ;; => #t
+    > (one-child-policy? non-compliant-graph) ;; => #f
     ```
