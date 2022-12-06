@@ -9,7 +9,7 @@
 {-# OPTIONS_GHC -fwarn-incomplete-uni-patterns #-}
 -- no incomplete patterns in lambdas!
 
-import Prelude hiding (map, pi)
+import Prelude hiding (map, pi, zip, foldl, zipWith, takeWhile)
 
 -- pattern matching (споставяне на образци):
 --------------------------------------------
@@ -68,7 +68,8 @@ map f (x:xs) = f x : map f xs
 -- (define (map f xs)
 --    (if (null? xs)
 --      xs
---      (const (f (car xs)) (map f xs)))
+--      (cons (f (car xs))
+--            (map f (cdr xs)))))
 
 -- Можем да правим иманувани образци с @
 headPlusLen :: [Int] -> Int
