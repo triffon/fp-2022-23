@@ -59,3 +59,120 @@
 ;; 9. repeat-list l -> прави безкраен поток от елементите на списък l
 ;; 10. iterate x f -> безкраен поток от типа x, f(x), f(f(x)), ...
 ```
+
+# Въведение в Haskell
+## (типизиран език, който се компилира)
+
+## Малко детайли за работа:
+Сваляме си GHC (Glasgow Haskell Compiler) от [тук](https://www.haskell.org/downloads/).\
+[Книжка за Haskell](http://learnyouahaskell.com/)\
+[VS code](https://code.visualstudio.com/) (редактор, в който можем и да използваме терминал)\
+**!!! Внимаваме с индентацията на кода, който пишем!**
+
+### Полезни команди:
+`ghci` - така отваряме интерактивния режим на GHC. Следващите команди са след като вече сме заредили ghci\
+`:load` или `:l` + път към файла ни - зарежда файла в средата ни\
+`:reload` или `:r` - след всяка промяна, за да се обнови\
+`:quit` или `:q` за изход от ghci
+
+### Основни типове в езика:
+```
+-- Bool
+-- Int
+-- Integer
+-- Float
+-- Double
+-- Char
+-- String
+```
+
+### Аритметични операции:
+
+```
+4 + 5
+(+) 4 5
+4 `mod` 3
+4 `div` 2
+2 ^ 3
+```
+
+### Сравнения:
+```
+4 >= 5
+2 == 3
+2 /= 3
+```
+
+## Логически операции
+```
+True && True
+True || False
+not True
+```
+
+
+### Задаване на тип и стойност:
+```
+a :: Int
+a = 5
+
+-- :t a в ghci ще ни върне типа на а
+```
+
+### Дефиниране на функция:
+```
+mySum :: Int -> Int -> Int
+mySum a b = a + b
+
+-- mySum приема два аргумента от тип Int и връща Int
+
+-- currying - имаме отложено оценяване
+add4 :: Int -> Int
+add4 = mySum 4
+```
+
+### Примери за употреба на основни конструкции:
+
+```
+-- с if + рекурсия
+fact :: Int -> Int
+fact n = if n == 1 then 1 else n * fact (n - 1)
+
+-- с гардове
+-- тук след името на функцията не слагаме =
+fact' :: Int -> Int
+fact' n
+  | n == 1 = 1
+  | otherwise = n * fact' (n - 1)
+
+-- pattern matching
+-- винаги от най-конкретното към по-общото
+fact'' :: Int -> Int
+fact'' 1 = 1
+fact'' n = n * fact'' (n - 1)
+
+-- вложени функции
+fib :: Int -> Int
+fib n = helper 1 1 n where
+  helper curr prev i
+    | i == 0 = 0
+    | i == 1 = curr
+    | otherwise = helper (curr + prev) curr (i - 1)
+
+-- друг начин за вложени функции
+fib' :: Int -> Int
+fib' n = let
+  helper curr prev i
+    | i == 0 = 0
+    | i == 1 = curr
+    | otherwise = helper (curr + prev) curr (i - 1)
+ in helper 1 1 n
+ ```
+
+## Задачи за решаване:
+```
+-- 1. max a b
+-- 2. countDigits
+-- 3. reverseDigits
+-- 4. prime?
+```
