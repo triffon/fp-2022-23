@@ -53,13 +53,13 @@
 (head numbers)          ;; => 1
 (head (tail numbers))   ;; => 2
 
-;; take приема поток като аргумент и връща списък
-(define (take n stream)
+;; stream-take приема поток като аргумент и връща списък
+(define (stream-take n stream)
   (if (or (< n 1) (empty-stream? stream))
       the-empty-stream
-      (cons (head stream) (take (- n 1) (tail stream)))))
+      (cons (head stream) (stream-take (- n 1) (tail stream)))))
 
-(take 5 numbers) ;; => '(1 2 3 4 5)
+(stream-take 5 numbers) ;; => '(1 2 3 4 5)
 ```
 
 ### Безкрайни потоци
@@ -78,66 +78,72 @@
 
 ## Задачи
 
-1. Дефинирайте функция `(drop n stream)`, която връща нов поток, образуван от `stream` като премахнем първите $n$ елемента
+```scheme
+;; краен поток
+(define stream (stream-range 1 5))
 
-2. Дефинирайте функция `(add stream1 stream2)`, която връща нов поток, всеки елемент на който е сумата от елементите на `stream1` и `stream2` на съответната позиция
+;; безкраен поток
+(define nats (from 0))
+```
 
-    ```scheme
-    (define numbers (stream-range 1 1000))
+1. Дефинирайте функция `(to-list stream)`, която приема краен поток и го преобразува в списък
 
-    > (take 5 (add numbers numbers)) ;; => '(2 4 6 8 10)
-    ```
-
-3. Дефинирайте функция `(stream-ref stream i)`, която връща елемента от потока `stream`, който се намира на позиция $i$
-
-    ```scheme
-    (define nats (from 0))
-
-    > (stream-ref nats 5) ;; => 5
-    ```
-
-4. Дефинирайте функция `(stream-map func stream)`, която прилага функцията `func` върху всеки елемент на потока `stream` и връща нов поток
+2. Дефинирайте функция `(stream-drop n stream)`, която връща нов поток, образуван от `stream` като премахнем първите $n$ елемента
 
     ```scheme
-    (define nats (from 0))
-
-    > (take 5 (stream-map (lambda (x) (+ x 1)) nats))
-    ;; => '(1 2 3 4 5)
+    > (to-list (stream-drop 2 stream)) ;; => '(3 4 5)
     ```
 
-5. Дефинирайте функция `(stream-filter pred? stream)`, която връща поток с елементите на потока `stream`, които удовлетворяват предиката `pred?`
+3. Дефинирайте функция `(add stream1 stream2)`, която връща нов поток, всеки елемент на който е сумата от елементите на `stream1` и `stream2` на съответната позиция
 
     ```scheme
-    (define nats (from 0))
-
-    > (take 5 (stream-filter odd? nats))
-    ;; => '(1 3 5 7 9)
+    > (to-list (add stream stream)) ;; => '(2 4 6 8 10)
     ```
 
-6. Дефинирайте функция `(stream-zip func stream1 stream2)`, която връща поток като прилага функцията `func` над съответните елементи на `stream1` и `stream2`
+4. Дефинирайте функция `(stream-ref stream i)`, която връща елемента от потока `stream`, който се намира на позиция $i$
 
     ```scheme
-    (define numbers (stream-range 1 1000))
-
-    > (take 5 (stream-zip + numbers numbers)) ;; => '(2 4 6 8 10)
+    > (stream-ref stream 2) ;; => 3
     ```
 
-7. Дефинирайте безкраен поток `ones`, който изглежда така: $[1,1,1,...]$
-
-
-
-7. Дефинирайте безкраен поток `fibonacci` от числата на Фибоначи
+5. Дефинирайте функция `(stream-map func stream)`, която прилага функцията `func` върху всеки елемент на потока `stream` и връща нов поток
 
     ```scheme
-    > (take 5 fibonacci) ;; => '(1 1 2 3 5)
+    > (to-list (stream-map (lambda (x) (+ x 1)) stream))
+    ;; => '(2 3 4 5 6)
     ```
 
-8. Дефинирайте функция `(compose func x)`, която връща безкраен поток от вида $[x, f(x), f(f(x)), ...]$ 
+6. Дефинирайте функция `(stream-filter pred? stream)`, която връща поток с елементите на потока `stream`, които удовлетворяват предиката `pred?`vjg
+
+    ```scheme
+    > (to-list (stream-filter odd? nats))
+    ;; => '(1 3 5)
+    ```
+
+7. Дефинирайте функция `(stream-zip func stream1 stream2)`, която връща поток като прилага функцията `func` над съответните елементи на `stream1` и `stream2`
+
+    ```scheme
+    > (to-list (stream-zip + stream stream)) ;; => '(2 4 6 8 10)
+    ```
+
+8. Дефинирайте безкраен поток `ones`, който изглежда така: $[1,1,1,...]$
+
+    ```scheme
+    > (stream-take 5 ones) ;; => '(1 1 1 1 1)
+    ```
+
+9. Дефинирайте безкраен поток `fibonacci` от числата на Фибоначи
+
+    ```scheme
+    > (stream-take 5 fibonacci) ;; => '(1 1 2 3 5)
+    ```
+
+10. Дефинирайте функция `(compose func x)`, която връща безкраен поток от вида $[x, f(x), f(f(x)), ...]$ 
 
     ```scheme
     (define squares (compose (lambda (x) (* x x)) 2))
 
-    > (take 5 squares) ;; => '(2 4 16 256 65536)
+    > (stream-take 5 squares) ;; => '(2 4 16 256 65536)
     ```
 
 # Haskell
@@ -385,7 +391,7 @@ toCelsius temperature
 
 4. Дефинирайте функция `fibonacci n`, която пресмята $n$-тото число на Фибоначи
 
-5. Дефинирайте функция `sum start end`, която намира сумата на числата в интервала $[start, end]$
+5. Дефинирайте функция `sum' start end`, която намира сумата на числата в интервала $[start, end]$
 
 6. Дефинирайте функция `fastPow x n`, която пресмята $x^n$, използвайки следното свойство: aко n е четно, то $x^n = (x^{(n/2)})^2$
 
