@@ -9,7 +9,7 @@ histogram lst@(x:xs) = (x, ocurrences) : histogram rest
   where ocurrences = length [ y | y <- lst, y == x]
         rest = [ y | y <- lst, y /= x]
 
--- намира максималният елемент в списък
+-- намира максималния елемент в списък
 -- maximumBy snd [(1, 2), (3, 1)] -- => (1, 2)
 maximumBy _ [x] = x  
 maximumBy func (x:xs) =

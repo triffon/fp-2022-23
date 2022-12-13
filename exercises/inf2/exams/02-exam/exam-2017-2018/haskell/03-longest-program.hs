@@ -20,7 +20,7 @@ starttime (_, (hours, minutes), _) =
 endtime tvshow@(_, _, duration) = 
   (starttime tvshow) + duration
 
--- намира максималният елемент в списък
+-- намира максималния елемент в списък
 -- maximumBy snd [(1, 2), (3, 1)] -- => (1, 2)
 maximumBy _ [x] = x  
 maximumBy func (x:xs) =
