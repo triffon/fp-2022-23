@@ -42,7 +42,7 @@ cycle = undefined
 scanl :: (b -> a -> b) -> b -> [a] -> [b]
 scanl = undefined
 
--- Безкраен поток от числата на Фибоначи
+-- Безкраен поток от числата на Фибоначи (hint: zipWith)
 --
 -- Пример:
 -- >>> take 10 fibs
