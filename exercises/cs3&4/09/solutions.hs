@@ -53,22 +53,15 @@ prime n = null [x | x<-[2..n-1], n `rem` x == 0]
 primes :: Int -> [Int]
 primes n = take n $ filter prime [2..]
 
--- Помощна за factorize
--- За n и d връща списък от повторения на d,
--- в зависимост колко пъти n се дели на d
--- listDivisors 18 3 = [3,3]
-listDivisors :: Int -> Int -> [Int]
-listDivisors 0 _ = []
-listDivisors n d
-  | n `rem` d /= 0 = []
-  | otherwise = d : listDivisors (n `quot` d) d
-
 -- За дадено естествено число, връща списък от простите му делители
 -- factorize 60 = [2, 2, 3, 5]
 -- 2*2*3*5 = 60
 factorize :: Int -> [Int]
-factorize n = concatMap (listDivisors n) ps
-  where ps = takeWhile (<= n `div` 2) $ primes n
+factorize 1 = []
+factorize n =
+  let primeDivs = [x | x<-[2..n], prime x, n `rem` x == 0]
+      first = head primeDivs
+   in first : factorize (n `div` first)
 
 -- quicksort за цели числа
 -- Няма нужда да взимаме случаен елемент
