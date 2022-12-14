@@ -231,6 +231,23 @@ mult = undefined
 safeDiv :: Int -> Int -> Maybe (Int, Int)
 safeDiv = undefined
 
+-- Проверява дали списък от списъци е квадратна матрица
+isSquareMatrix :: [[a]] -> Bool
+isSquareMatrix = undefined
+
+-- Връща главния диагонал на матрица (списък от списъци)
+mainDiag :: [[a]] -> [a]
+mainDiag = undefined
+
+-- Връща вторичния диагонал на матрица (списък от списъци)
+secondaryDiag :: [[a]] -> [a]
+secondaryDiag = undefined
+
+-- (a,b,c) е Питагорова тройка ако: a*a + b*b = c*c
+-- Да се напише функция която генерира списък от всички Питагорови тройки
+pythagoreanTriples :: Int -> [(Int, Int, Int)]
+pythagoreanTriples = undefined
+
 -- Търсим стойност по ключ в асоциативен списък (списък от двойки).
 -- Може да не намерим такава.
 --
