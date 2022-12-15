@@ -1,7 +1,9 @@
 # Подготовка за Контролно 2
 
-### [Примерна тема за второ контролно (2021/22 г.)](https://learn.fmi.uni-sofia.bg/mod/page/view.php?id=263183)
+### [Примерна тема за второ контролно (2021/22 г.)](https://learn.fmi.uni-sofia.bg/mod/page/view.php?id=263183) [(Решения)](./exam-2021-2022/)
 
 ### [Второ контролно (2019/20 г.)](./second-19-20.pdf) [(Решения)](./exam-2019-2020/)
 
 ### [Второ контролно (2017/18 г.)](./second-17-18.pdf) [(Решения)](./exam-2017-2018/)
+
+### [Изпит (2017/2018 г.)](https://docs.google.com/document/d/1U0atZZBMUMJy0nwO4yeEyY-NVmbu7037eOwmeh-95p8)
