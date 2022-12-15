@@ -47,7 +47,9 @@ nub (x:xs) = x : nub (filter (/=x) xs)
 
 -- Проверява дали число е просто
 prime :: Int -> Bool
-prime n = null [x | x<-[2..n-1], n `rem` x == 0]
+prime n
+  | n < 2 = False
+  | otherwise = null [x | x<-[2..n-1], n `rem` x == 0]
 
 -- За дадено число n връща списък от първите n прости (положителни) числа
 primes :: Int -> [Int]
