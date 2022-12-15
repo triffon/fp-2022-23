@@ -225,6 +225,9 @@
 > ceiling 2.718 -- => 3
 > floor 2.718   -- => 2
 
+-- функции за преобразуване на числа
+-- fromIntegral, fromInteger, toInteger, realToFrac, fromRational, toRational
+
 > succ 5        -- => 6
 > pred 5        -- => 4
 ```
