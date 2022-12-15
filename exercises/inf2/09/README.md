@@ -1,5 +1,7 @@
 # Упражнение 9
 
+Съдържание: [Scheme (Потоци)](#scheme) + [Haskell (Въведение)](#haskell)
+
 # Scheme
 
 ## Отложени операции (Promise)
