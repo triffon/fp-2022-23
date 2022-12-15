@@ -7,3 +7,5 @@
 ### [Второ контролно (2017/18 г.)](./second-17-18.pdf) [(Решения)](./exam-2017-2018/)
 
 ### [Изпит (2017/2018 г.)](https://docs.google.com/document/d/1U0atZZBMUMJy0nwO4yeEyY-NVmbu7037eOwmeh-95p8)
+
+### [Второ контролно (2016/17 г.)](./second-16-17.pdf)
