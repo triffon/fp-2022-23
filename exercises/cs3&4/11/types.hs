@@ -7,7 +7,7 @@
 -- use all your pattern matches!
 {-# OPTIONS_GHC -fwarn-unused-matches #-}
 
-import Prelude hiding (Either (..), Maybe (..), filter, foldl, length, map, reverse, takeWhile, zip, zipWith)
+import Prelude hiding (Either (..), Maybe (..), length)
 
 -- TODO Throbwack - Мързеливо оценяване:
 ----------------------------------------
