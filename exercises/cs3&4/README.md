@@ -13,4 +13,5 @@
 
 ### Други
 - [Решения на задачите от контролно 1](./exam1-solutions.rkt)
-- [Бонус задачи за списъци](../extra-lists-tasks.md)
+- [Бонус задачи за списъци](../extra-tasks.md)
+- [Parse, don't validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
