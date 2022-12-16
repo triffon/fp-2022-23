@@ -116,7 +116,9 @@ data Either a b
   deriving (Show)
 
 -- Двоично дърво:
-data BTree a = Leaf | Node (BTree a) (BTree a)
+data BTree a
+  = Leaf
+  | Node a (BTree a) (BTree a)
   deriving (Show)
 
 -- Да пробваме да декларираме граф:
@@ -124,7 +126,7 @@ data BTree a = Leaf | Node (BTree a) (BTree a)
 -- (TODO: съседите трябва ли да са върхове?)
 data GNode a = GNode
   { value :: a,
-    adjacent :: [a]
+    adjacents :: [a]
   }
 
 -- Използваме record syntax, за да дадем имена на "полетата".
@@ -248,8 +250,9 @@ secondaryDiag :: [[a]] -> [a]
 secondaryDiag = undefined
 
 -- (a,b,c) е Питагорова тройка ако: a*a + b*b = c*c
--- Да се напише функция която генерира списък от всички Питагорови тройки
-pythagoreanTriples :: Int -> [(Int, Int, Int)]
+-- Да се напише функция която генерира безкраен списък
+-- от всички Питагорови тройки.
+pythagoreanTriples :: [(Int, Int, Int)]
 pythagoreanTriples = undefined
 
 -- Търсим стойност по ключ в асоциативен списък (списък от двойки).
