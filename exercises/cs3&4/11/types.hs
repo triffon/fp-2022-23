@@ -1,7 +1,9 @@
 -- cover all cases!
 {-# OPTIONS_GHC -fwarn-incomplete-patterns #-}
--- no incomplete patterns in lambdas!
+-- warn about incomplete patterns v2
 {-# OPTIONS_GHC -fwarn-incomplete-uni-patterns #-}
+-- write all your toplevel signatures!
+{-# OPTIONS_GHC -fwarn-missing-signatures #-}
 -- use different names!
 {-# OPTIONS_GHC -fwarn-name-shadowing #-}
 -- use all your pattern matches!
@@ -274,15 +276,6 @@ lookup = undefined
 -- Nothing
 findPred :: (a -> Bool) -> BTree a -> Maybe a
 findPred = undefined
-
-g :: Graph Int
-g =
-  [ GNode 1 [2, 3],
-    GNode 2 [4],
-    GNode 3 [5],
-    GNode 4 [],
-    GNode 5 [1, 4]
-  ]
 
 -- Връща броя наследници на даден връх
 outDeg :: Graph a -> a -> Int

@@ -1,15 +1,15 @@
-{-# OPTIONS_GHC -fwarn-incomplete-patterns #-}
 -- cover all cases!
-{-# OPTIONS_GHC -fwarn-unused-matches #-}
--- use all your pattern matches!
-{-# OPTIONS_GHC -fwarn-missing-signatures #-}
--- write all your toplevel signatures!
-{-# OPTIONS_GHC -fwarn-name-shadowing #-}
--- use different names!
+{-# OPTIONS_GHC -fwarn-incomplete-patterns #-}
+-- warn about incomplete patterns v2
 {-# OPTIONS_GHC -fwarn-incomplete-uni-patterns #-}
--- no incomplete patterns in lambdas!
+-- write all your toplevel signatures!
+{-# OPTIONS_GHC -fwarn-missing-signatures #-}
+-- use different names!
+{-# OPTIONS_GHC -fwarn-name-shadowing #-}
+-- use all your pattern matches!
+{-# OPTIONS_GHC -fwarn-unused-matches #-}
 
-import Prelude hiding (map, pi, zip, foldl, zipWith, takeWhile)
+import Prelude hiding (foldl, map, pi, takeWhile, zip, zipWith)
 
 -- pattern matching (споставяне на образци):
 --------------------------------------------
@@ -22,8 +22,8 @@ factGuards n
 -- Сега същата функция, но дефинирана с case синтаксис:
 factCase :: Int -> Int
 factCase n = case n of
-           0 -> 1
-           k -> k * factCase (k - 1)
+  0 -> 1
+  k -> k * factCase (k - 1)
 
 -- Какво ни прави впечатление?
 -- При case не използваме булева проверка (== 0) за базовия случай,
@@ -47,6 +47,7 @@ factCase n = case n of
 fact :: Int -> Int
 fact 0 = 1 -- получили сме 0 и директно връщаме 1
 fact n = n * fact (n - 1)
+
 -- получили сме някакво число и му даваме името "n".
 -- със сигурност не е 0,
 -- защото проверката на дефинициите се случва отгоре надолу.
@@ -60,7 +61,8 @@ fact n = n * fact (n - 1)
 -- Съответно можем да съпоставяме по [] и (:) за стандартните списъци
 map :: (a -> b) -> [a] -> [b]
 map _ [] = []
-map f (x:xs) = f x : map f xs
+map f (x : xs) = f x : map f xs
+
 -- Не забравяйте за скобите в (x:xs)
 
 -- map еквивалент на Scheme:
@@ -76,12 +78,11 @@ headPlusLen :: [Int] -> Int
 headPlusLen [] = 0
 headPlusLen r@(x : _) = x + length r
 
-
 -- * Ползвайте guard-ове само когато наистина се налага!
+
 --   (тоест наистина ви трябва булева проверка)
 
 -- * Във всички други случаи ползвайте pattern matching!
-
 
 -- Вложени дефиниции:
 ---------------------
@@ -94,8 +95,10 @@ headPlusLen r@(x : _) = x + length r
 --
 -- Пример:
 circlePerimeter :: Float -> Float
-circlePerimeter r = let pi = 3.14
-                    in 2 * pi * r
+circlePerimeter r =
+  let pi = 3.14
+   in 2 * pi * r
+
 -- let в Haskell е подобна конструкция на letrec в scheme
 
 -- Друга конструкция е where - не е израз и работи само в рамките на дефиниция:
@@ -108,10 +111,10 @@ circlePerimeter r = let pi = 3.14
 -- Пример:
 circleArea :: Float -> Float
 circleArea r = pi * r * r
-    where pi = 3.14
+  where
+    pi = 3.14
 
 -- * Внимавайте с идентацията!
-
 
 -- Списъци и генератори:
 ------------------------
@@ -120,7 +123,6 @@ circleArea r = pi * r * r
 
 -- Съответно всички стандартни функции за списъци,
 -- работят и върху безкрайни списъци.
-
 
 -- List generators:
 
@@ -161,8 +163,8 @@ circleArea r = pi * r * r
 -- [(x,y) | x<-[1..10], y<-[1..10], odd x, even y]
 -- всички двойки (x,y), такива че
 -- x е от [1..10], y е от [1..10], x е нечетно и y е четно
--- * всички двойки означава всяко със всяко когато имаме 2 генератора
 
+-- * всички двойки означава всяко със всяко когато имаме 2 генератора
 
 --------------------------------------------------------------------------------
 -- ЗАДАЧИ --
