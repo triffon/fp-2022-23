@@ -11,7 +11,7 @@ import Distribution.Simple.Utils (xargs)
 -- [] :: [a]
 x :: Int
 x = 2
--- >>> :t (x : []) 
+-- >>> :t (x : [])
 -- (x : []) :: [Int]
 -- >>> :t ((+x) : [])
 -- ((+x) : []) :: [Int -> Int]
@@ -39,7 +39,7 @@ length (_:t) = 1 + length t
 length2 :: [a] -> Int
 length2 l
   | null l    = 0
-  | otherwise = 1 + length2 (tail l) 
+  | otherwise = 1 + length2 (tail l)
 -- >>> length2 [1..5]
 -- 5
 
@@ -91,7 +91,7 @@ enumFromTo from to
 (x:xs) ++ l = x:xs ++ l
 -}
 
-l1 ++ l2 = foldr (:) l2 l1 
+l1 ++ l2 = foldr (:) l2 l1
 
 -- >>> [1..3] ++ [5..7]
 -- [1,2,3,5,6,7]
@@ -108,7 +108,7 @@ snoc x r = r ++ [x]
 rcons :: [a] -> a -> [a]
 rcons xs x = x : xs
 
--- reverse = foldr (\x -> (++[x])) [] 
+-- reverse = foldr (\x -> (++[x])) []
 -- reverse = foldr snoc []
 
 
@@ -136,7 +136,7 @@ elem y (x:xs)
  | x == y    = True
  | otherwise = elem y xs
 
--- elem x l = not (null l) && (head l == x || elem x (tail l)) 
+-- elem x l = not (null l) && (head l == x || elem x (tail l))
 
 -- >>> elem 3 [1..5]
 -- True
@@ -160,7 +160,7 @@ elem y (x:xs)
 -- >>> :t 1.4
 -- 1.4 :: Fractional p => p
 
-pythagoreanTriples from to = 
+pythagoreanTriples from to =
     [ (x, y, z) | x <- [from..to],
                   y <- [x..to],
                   z <- [from..to],
