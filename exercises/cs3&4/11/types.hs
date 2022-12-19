@@ -132,7 +132,6 @@ data BTree a
 
 -- Да пробваме да декларираме граф:
 -- Всеки връх в графа има стойност и съседи.
--- (TODO: съседите трябва ли да са върхове?)
 data GNode a = GNode
   { value :: a,
     adjacents :: [a]
@@ -154,6 +153,15 @@ newtype Graph2 a = Graph2 [GNode a]
 
 -- Или може просто да направим синоним на [GNode a]
 type Graph a = [GNode a]
+
+-- Въпрос: съседите трябва ли да са върхове?
+--
+-- Ако съседите са върхове, т.е. adjacents :: [GNode a]
+-- То типа на графа е доста по-силен, защото още по време на компилация
+-- се уверяваме че съседите наистина са върхове, а не някакви произволни
+-- елементи от тип "a".
+--
+-- Как ще съсздадем стойност от тип Graph тогава?
 
 -- Помните ли тази дефиниция на факториел и как зацикля за отрицателни числа?
 fact :: Int -> Int
@@ -192,6 +200,10 @@ mapList f (Cons h t) = Cons (f h) (mapList f t)
 --------------------------------------------------------------------------------
 -- ЗАДАЧИ --
 ------------
+
+-- NOTE: Ще използваме по-слабият тип за Graph,
+--       тъй като той не ни носи никакви бонуси в сравнение с [(a,[a])],
+--       направо ще работим със списъка от двойки (засега).
 
 -- За дадено n връща (n - 1)
 --
@@ -275,31 +287,19 @@ pythagoreanTriples = undefined
 lookup :: Eq k => k -> [(k, v)] -> Maybe v
 lookup = undefined
 
--- Проверка за съществуване на елемент, изпълняващ даден предикат.
--- Примери:
--- >>> findPred even  (Node 1 (Node 3 Leaf Leaf) (Node 2 Leaf Leaf))
--- Just 2
--- >>> findPred (>20) (Node 1 (Node 3 Leaf Leaf) (Node 2 Leaf Leaf))
--- Nothing
-findPred :: (a -> Bool) -> BTree a -> Maybe a
-findPred = undefined
-
 -- Връща броя наследници на даден връх
-outDeg :: Graph a -> a -> Int
+outDeg :: Eq a => a -> [(a, [a])] -> Int
 outDeg = undefined
 
 -- Връща броя родители на даден връх
-inDeg :: Graph a -> a -> Int
+inDeg :: Eq a => a -> [(a, [a])] -> Int
 inDeg = undefined
 
 -- Проверява дали има ребро между два върха
-edge :: Graph a -> a -> a -> Bool
+edge :: Eq a => a -> a -> [(a, [a])] -> Bool
 edge = undefined
 
--- Връща (Just) някой път между два върха. Nothing - ако няма такъв.
-path :: Graph a -> a -> a -> Maybe [a]
+-- Проверява дали има път между два върха в ацикличен граф.
+-- Бонус: да работи за графи с цикъли
+path :: Eq a => [(a, [a])] -> a -> a -> Bool
 path = undefined
-
--- Връща (Just) най-кратък път между два върха. Nothing - ако няма такъв.
-shortestPath :: Graph a -> a -> a -> Maybe [a]
-shortestPath = undefined
