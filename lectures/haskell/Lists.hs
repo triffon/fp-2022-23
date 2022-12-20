@@ -4,8 +4,10 @@ import Prelude hiding
     (head, tail, null, length,
       enumFromTo, (++), reverse, (!!), elem,
       init, last, take, drop,
-      map, filter, foldr, foldl, foldr1, foldl1)
-import Distribution.Simple.Utils (xargs)
+      map, filter, foldr, foldl, foldr1, foldl1, scanr, scanl,
+      zip, unzip, zipWith,
+      takeWhile, dropWhile,
+      any, all)
 
 -- >>> :t []
 -- [] :: [a]
@@ -274,3 +276,105 @@ foldl1 op (x:xs) = foldl op x xs
 foldl2 op nv l = foldr (flip op) nv (reverse l)
 -- >>> foldl2 rcons [] [1..10]
 -- [10,9,8,7,6,5,4,3,2,1]
+
+{-
+scanr :: (t -> a -> a) -> a -> [t] -> [a]
+scanr _  nv []     = [nv]
+scanr op nv (x:xs) = (x `op` r) : rest
+  where rest@(r:_) = scanr op nv xs
+-}
+
+{-
+foldr _  nv []     = nv
+foldr op nv (x:xs) = x `op` foldr op nv xs
+-}
+
+scanr :: (t -> a -> a) -> a -> [t] -> [a]
+scanr op nv = foldr (\x rest@(r:_) -> (x `op` r) : rest) [nv]
+
+-- >>> foldr (+) 0 [1..10]
+-- 55
+-- >>> scanr (+) 0 [1..10]
+-- [55,54,52,49,45,40,34,27,19,10,0]
+
+{-
+foldl _  nv []     = nv
+foldl op nv (x:xs) = foldl op (nv `op` x) xs
+-}
+
+scanl :: (t1 -> t2 -> t1) -> t1 -> [t2] -> [t1]
+scanl _  nv []     = [nv]
+scanl op nv (x:xs) = nv : scanl op (nv `op` x) xs
+
+-- >>> scanl (+) 0 [1..10]
+-- [0,1,3,6,10,15,21,28,36,45,55]
+
+
+zipWith :: (t1 -> t2 -> a) -> [t1] -> [t2] -> [a]
+zipWith _  _      []     = []
+zipWith _  []     _      = []
+zipWith op (x:xs) (y:ys) = x `op` y : zipWith op xs ys
+
+zip :: [t1] -> [t2] -> [(t1, t2)]
+zip = zipWith (,)
+
+unzip :: [(a1, a2)] -> ([a1], [a2])
+{-
+unzip [] = ([],[])
+unzip ((x, y):xys) = (x:xs, y:ys)
+  where (xs, ys) = unzip xys
+-}
+
+-- unzip l = (map fst l, map snd l)
+unzip = foldr (\(x,y) (xs, ys) -> (x:xs, y:ys)) ([], [])
+
+-- >>> zip [1..10] [11..20]
+-- [(1,11),(2,12),(3,13),(4,14),(5,15),(6,16),(7,17),(8,18),(9,19),(10,20)]
+-- >>> zip [1..10] [11..13]
+-- [(1,11),(2,12),(3,13)]
+-- >>> zip [1..3] [11..20]
+-- [(1,11),(2,12),(3,13)]
+-- >>> unzip [(1,11),(2,12),(3,13)]
+-- ([1,2,3],[11,12,13])
+
+-- >>> zipWith (+) [1..3] [11..13]
+-- [12,14,16]
+-- (map + l1 l2)
+
+takeWhile :: (a -> Bool) -> [a] -> [a]
+-- takeWhile p = foldr (\x r -> if p x then x:r else []) [] 
+takeWhile p = foldr (\x -> if p x then (x:) else const []) [] 
+-- filter p = foldr (\x -> if p x then (x:) else id) [] 
+
+-- >>> takeWhile odd [1,3,5,4,6,7,9]
+-- [1,3,5]
+-- >>> takeWhile (>0) [1..5]
+-- [1,2,3,4,5]
+
+-- dropWhile p = foldr (\x r -> if p x then r else ?) []
+dropWhile :: (a -> Bool) -> [a] -> [a]
+dropWhile _ []     = []
+dropWhile p l@(x:xs)
+ | p x       = dropWhile p xs
+ | otherwise = l 
+-- >>> dropWhile odd [1,3,5,4,6,7,9]
+-- [4,6,7,9]
+
+any :: (a -> Bool) -> [a] -> Bool
+any p l = or (map p l)
+
+all :: (a -> Bool) -> [a] -> Bool
+all p l = and (map p l)
+
+
+-- >>> any odd [1..10]
+-- True
+-- >>> any (<0) [1..10]
+-- False
+-- >>> all odd [1..10]
+-- False
+-- >>> all (>0) [1..10]
+-- True
+
+-- >>> zip [1..10] (tail [1..10])
+-- [(1,2),(2,3),(3,4),(4,5),(5,6),(6,7),(7,8),(8,9),(9,10)]
