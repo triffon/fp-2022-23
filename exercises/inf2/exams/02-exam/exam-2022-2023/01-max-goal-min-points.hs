@@ -65,15 +65,8 @@ winsAll team1 team2 tournament =
 winsAny team1 team2 tournament =
   any (\game -> winsOver team1 team2 game) tournament
 
-quicksort [] = []
-quicksort (x:xs) =
-  quicksort smaller ++ [x] ++ quicksort larger
-  where smaller = filter (\y -> y <= x) xs
-        larger = filter (\y -> y > x) xs
-
 surpassSelf tournament =
-  -- filter surpassSelfHelper teams
-  surpassSelfHelper "A"
+  filter surpassSelfHelper teams
   where
     teams = getTeams tournament
     surpassSelfHelper team =
