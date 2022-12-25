@@ -62,7 +62,7 @@ insertOrdered x (Node y l r)
 --        (Node 9 Empty (Node 10 Empty Empty))
 listToTree :: Ord a => [a] -> BTree a
 listToTree [] = Empty
-listToTree (_ : xs) = foldr insertOrdered Empty xs
+listToTree xs = foldr insertOrdered Empty xs
 
 -- По дадено дърво от числа да се намери сбора на елементите му.
 sumTree :: Num a => BTree a -> a
