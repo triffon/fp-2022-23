@@ -18,4 +18,6 @@
 - [Решения на задачите от контролно 1](./exam1-solutions.rkt)
 - [Решения на задачи от контролно 2](./k2-22-23.hs)
 - [Бонус задачи за списъци](../extra-tasks.md)
+- [Търсачка по имена и типови декларации - Hoogle](https://hoogle.haskell.org/)
+- [Типови класове в Haskell - Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
 - [Parse, don't validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
