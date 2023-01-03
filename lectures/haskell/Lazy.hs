@@ -4,6 +4,7 @@ import Prelude hiding (enumFrom, repeat, cycle, iterate)
 
 sumHeads :: Num a => [a] -> [a] -> a
 sumHeads (x:_) (y:_) = x + y
+sumHeads _ _ = error "И двата списъка трябва да са непразни"
 
 -- >>> sumHeads [1..10000000000000000] [3..32894748974829374893748397489734]
 -- 4
