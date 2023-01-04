@@ -74,6 +74,12 @@ instance Eq a => Eq (Tree a) where
   (Node x1 l1 r1) == (Node x2 l2 r2) = x1 == x2 && l1 == l2 && r1 == r2
   _ == _ = False
 
+-- Инстанция на друг полезен клас - за "обхождане" на съдържаните стойности, в случая ляво-корен-дясно
+-- сега можем да викаме функции като fold-овете, length, sum, maximum върху дърветата ни :)
+instance Foldable Tree where
+  foldr _ nv Empty = nv
+  foldr op nv (Node x l r) = foldr op (op x (foldr op nv r)) l
+
 testTree :: Tree (Int -> Int)
 testTree = Node (+1)
                 (Node (^2)
