@@ -1,6 +1,8 @@
 {-# LANGUAGE InstanceSigs #-}
 {-# LANGUAGE NamedFieldPuns #-}
 
+import Control.Monad.State.Lazy
+
 -- cover all cases!
 {-# OPTIONS_GHC -fwarn-incomplete-patterns #-}
 -- warn about incomplete patterns v2
@@ -15,9 +17,9 @@
 type Reg = String
 
 data Instr
-    = Const Reg Int
-    | Add Reg Reg Reg
-    | End Reg
+    = IConst Reg Int
+    | IAdd Reg Reg Reg
+    | IEnd Reg
 
 newtype Program = Program [Instr]
 
@@ -26,16 +28,16 @@ instance (Show Program) where
     show (Program p) = concatMap (++ "\n") (map show p)
 
 instance (Show Instr) where
-    show (Const x i) = x ++ " <- " ++ (show i)
-    show (Add x y z) = x ++ " <- " ++ y ++ " + " ++ z
-    show (End x) = "end " ++ x
+    show (IConst x i) = x ++ " <- " ++ (show i)
+    show (IAdd x y z) = x ++ " <- " ++ y ++ " + " ++ z
+    show (IEnd x) = "end " ++ x
 
 testProg :: Program
 testProg = Program
-    [ Const "x" 42
-    , Const "y" 26
-    , Add "z" "x" "y"
-    , End "z"
+    [ IConst "x" 42
+    , IConst "y" 26
+    , IAdd "z" "x" "y"
+    , IEnd "z"
     ]
 
 data MachineState
@@ -46,19 +48,19 @@ data MachineState
 
 step :: MachineState -> Either (Maybe Int) MachineState
 step (MachineState { rm, prg = Program (instr:rest) }) = case instr of
-    (End r) -> Left $ getRM r rm
-    (Const r i) -> Right $ MachineState
+    (IEnd r) -> Left $ getRM r rm
+    (IConst r i) -> Right $ MachineState
         { rm = putRM r i rm
         , prg = Program rest
         }
-    (Add z x y) -> case (getRM x rm, getRM y rm) of
+    (IAdd z x y) -> case (getRM x rm, getRM y rm) of
         (Just x', Just y') -> Right $ MachineState
             { rm = putRM z (x' + y') rm
             , prg = Program rest
             }
-        _ -> error $ "dyado"
+        _ -> Left $ Nothing
 
-step _ = error $ "baba"
+step _ = Left $ Nothing
 
 step' :: Either (Maybe Int) MachineState -> Either (Maybe Int) MachineState
 step' = (>>= step)
@@ -82,8 +84,77 @@ untilIsLeft :: (a -> Either end a) -> Either end a -> end
 untilIsLeft _ (Left x) = x
 untilIsLeft f (Right x) = untilIsLeft f (f x) 
 
-(>=>) :: (Monad m) => (a -> m b) -> (b -> m c) -> (a -> m c)
-(>=>) famb fbmc a = do
-    b <- famb a
-    c <- fbmc b
-    pure c
+
+-- ********************
+
+data Expr
+    = EConst Int
+    | EAdd Expr Expr
+
+instance (Show Expr) where
+    show (EConst a) = show a
+    show (EAdd x y) = "(" ++ (show x) ++ " + " ++ (show y) ++ ")"
+
+(+!+) :: Expr -> Expr -> Expr
+x +!+ y = EAdd x y
+
+testExpr :: Expr
+testExpr = (EConst 2) +!+ (EConst 6) +!+ ((EConst 10) +!+ (EConst 100))
+
+-- ((2 + 6) + (10 + 100))
+
+-- dvoika <- const 2
+-- shit <- const 6
+-- left <- add dvoika shit
+-- desetka <- const 10
+-- sto <- const 100
+-- right <- add desetka 100
+-- result <- add left right
+-- end result
+
+data CompilerState = CompilerState
+    { instructions :: [Instr]
+    , newReg :: Int
+    }
+
+
+compile :: Expr -> Program
+compile expr = flip evalState initialCompilerState  $ do
+    reg <- compileExpr expr
+    pushInstr $ IEnd reg
+    instrs <- getAllInstrs
+    return $ Program instrs
+
+compileExpr :: Expr -> State CompilerState Reg
+compileExpr (EConst a) = do
+    reg <- getNewReg
+    pushInstr $ IConst reg a
+    return reg
+compileExpr (EAdd x y) = do
+    reg <- getNewReg
+    regX <- compileExpr x
+    regY <- compileExpr y
+    pushInstr $ IAdd reg regX regY
+    return reg
+
+pushInstr :: Instr -> State CompilerState ()
+pushInstr instr = do
+    s@(CompilerState { instructions }) <- get
+    put $ s { instructions = instr : instructions }
+
+getNewReg :: State CompilerState Reg
+getNewReg = do
+    s@(CompilerState { newReg }) <- get
+    put $ s { newReg = succ newReg }
+    return $ "r" ++ (show newReg)
+
+getAllInstrs :: State CompilerState [Instr]
+getAllInstrs = do
+    (CompilerState { instructions }) <- get
+    return $ reverse $ instructions
+
+initialCompilerState :: CompilerState
+initialCompilerState = CompilerState
+    { instructions = []
+    , newReg = 1
+    }
