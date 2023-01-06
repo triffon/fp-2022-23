@@ -48,6 +48,7 @@ data Nat
 -- Като не е задължително това да се случи в дефиницията на типа.
 -- (може да сме получили типа от външен модул)
 deriving instance Read Nat
+
 -- >>> read "Succ (Succ Z)" :: Nat
 -- Succ (Succ Z)
 
@@ -243,7 +244,6 @@ integerToBitVector = undefined
 -- 16
 bitVectorToInteger :: BitVector -> Integer
 bitVectorToInteger = undefined
--- ^ Hint: canonicalise
 
 -- Имплементирайте нужните функции (и инстанции на Bit) за да бъде
 -- BitVector инстанция на класовете Eq, Ord и частично на Num.
@@ -273,6 +273,8 @@ instance Num BitVector where
 -- >>> End == (End :. Zero :. Zero)
 -- True
 instance Eq BitVector
+-- ^ Hint: canonicalise
+
 
 -- >>> compare (5 :: BitVector) (5 :: BitVector
 -- EQ
@@ -283,6 +285,8 @@ instance Eq BitVector
 -- >>> compare End (End :. Zero :. Zero)
 -- EQ
 instance Ord BitVector
+-- ^ Hint: canonicalise
+
 
 -- Имплементирайте mergeSort и го тествайте с BitVector
 mergeSort :: Ord a => [a] -> [a]
