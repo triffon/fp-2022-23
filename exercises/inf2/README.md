@@ -21,9 +21,8 @@
 :one::zero: [**[12/12] Haskell** Кортежи, списъци, pattern matching](./10)  
 :one::one: [**[15/12] Haskell** Безкрайни списъци, lambda функции, функции от по-висок ред над списъци](./11)  
 :one::two: [**[22/12] Haskell** Частично прилагане на фунции, безточково програмиране, матрици, задачи от контролно](./12)  
-:one::three: **[05/01] Haskell** <span style="color:silver">Алгебрични типове данни, двоични дървета</span>  
-:one::four: **[12/01] Haskell** <span style="color:silver">Двоични дървета, подготовка за изпит</span>  
-:one::five: **[19/01] Haskell** <span style="color:silver">Подготовка за изпит</span>  
+:one::three: **[12/01] Haskell** <span style="color:silver">Алгебрични типове данни, двоични дървета</span>  
+:one::four: **[19/01] Haskell** <span style="color:silver">Двоични дървета, подготовка за изпит</span>  
 
 # Допълнителни материали
 
