@@ -28,9 +28,9 @@ findIndex y (x:xs)
 
 -- $ прилага функция над стойност
 -- <$> прилага функция над "опакована" стойност и опакова обратно резултата
-maybebstValues :: Maybe a -> [a]
-maybebstValues (Just x) = [x]
-maybebstValues Nothing = []
+maybeToList :: Maybe a -> [a]
+maybeToList (Just x) = [x]
+maybeToList Nothing = []
 
 mapMaybe :: (a -> Maybe b) -> [a] -> [b]
 mapMaybe f = foldr (\el res -> case f el of Nothing -> res; Just x -> x:res) []
@@ -58,9 +58,9 @@ bloom t@(Node x Empty Empty) = Node x t t -- reuse :)
 bloom (Node x l r) = Node x (bloom l) (bloom r)
 
 -- Зад.6
-rotatel, rotater :: Tree a -> Tree a
-rotatel  (Node p a (Node q b c)) = Node q (Node p a b) c
-rotater (Node q (Node p a b) c) = Node p a (Node q b c)
+rotateLeft, rotateRight :: Tree a -> Tree a
+rotateLeft  (Node p a (Node q b c)) = Node q (Node p a b) c
+rotateRight (Node q (Node p a b) c) = Node p a (Node q b c)
 
 -- Зад.7 - търсената функция е безкрайно по-полезна след преименуване :)
 instance Functor Tree where
