@@ -208,15 +208,42 @@ data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Eq, Show, Read)
 ## Двоични дървета
 
 ```haskell
-data BinTree a = Empty | Node { root :: a, left, right :: BinTree a } deriving (Eq, Show, Read)
+data BinaryTree a = Empty | Node { root :: a, left, right :: BinaryTree a } deriving (Eq, Show, Read)
 
-makeLeaf :: a -> BinTree a  
+makeLeaf :: a -> BinaryTree a  
 makeLeaf x = Node x EmptyTree EmptyTree  
 
-mapBinTree :: (a -> b) -> BinTree a -> BinTree b
-mapBinTree _ Empty = Empty
-mapBinTree f (Node x l r) = Node (f x) (mapBinTree f l) (mapBinTree f r) 
+mapBinaryTree :: (a -> b) -> BinaryTree a -> BinaryTree b
+mapBinaryTree _ Empty = Empty
+mapBinaryTree f (Node x l r) =
+    Node (f x) (mapBinaryTree f l) (mapBinaryTree f r) 
 ```
 ---
 
-## Задачи
+## Задачи 
+
+```haskell
+tree :: BinaryTree Int
+tree =
+  Node 1
+    (Node 2
+      (Node 3
+        EmptyTree
+        EmptyTree)
+      EmptyTree)
+    (Node 4
+      EmptyTree
+      EmptyTree)
+```
+
+1. Дефинирайте функция `depth tree`, която намира дължочината на подаденото двоично дърво
+
+2. Дефинирайте функция `countLeaves tree`, която намира броя на листата на подаденото двоично дърво
+
+3. Дефинирайте функции `collectPreOrder tree` и `collectInOrder tree`, които връщат списък от елементите на дървото, обходено съотвено `root-left-right` и `left-root-right`
+
+4. Дефинирайте функция `level tree index`, която връща списък от стойностите на възлите, намиращи се на дълбочина `index` от корена
+
+5. Дефинирайте функция `prune tree`, която премахва всички листа в подаденото дърво
+
+6. Дефинирайте функция `invert tree`, която връща огледалния образ на `tree`
