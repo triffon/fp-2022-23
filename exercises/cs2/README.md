@@ -14,6 +14,13 @@
 
 [Typeclassopedia - въведение във Functor, Applicative, Monad и други абстрактни типови класове](http://wiki.haskell.org/Typeclassopedia)
 
+[Parse, don't validate - Type-driven design](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
+
+Защо да използваме `Maybe` вместо `Bool`:
+<br /> https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
+<br /> https://runtimeverification.com/blog/code-smell-boolean-blindness/
+<br /> https://existentialtype.wordpress.com/2011/03/15/boolean-blindness/
+
 
 | № | Упражнения на Scheme | | № | Упражнения на Haskell |
 | --- | --- | --- | --- | --- |
