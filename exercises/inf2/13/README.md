@@ -200,7 +200,7 @@ data Maybe a = Nothing | Just a
 ## Рекурсивни типове
 
 ```haskell
-data List a = EmptyTree | Cons a (List a) deriving (Show, Read, Eq, Ord)  
+data List a = EmptyList | Cons a (List a) deriving (Show, Read, Eq, Ord)  
 
 data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Eq, Show, Read)
 ```
