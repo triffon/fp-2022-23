@@ -200,7 +200,7 @@ data Maybe a = Nothing | Just a
 ## Рекурсивни типове
 
 ```haskell
-data List a = Empty | Cons a (List a) deriving (Show, Read, Eq, Ord)  
+data List a = EmptyTree | Cons a (List a) deriving (Show, Read, Eq, Ord)  
 
 data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Eq, Show, Read)
 ```
@@ -208,13 +208,13 @@ data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Eq, Show, Read)
 ## Двоични дървета
 
 ```haskell
-data BinaryTree a = Empty | Node { root :: a, left, right :: BinaryTree a } deriving (Eq, Show, Read)
+data BinaryTree a = EmptyTree | Node { root :: a, left :: BinaryTree a, right :: BinaryTree a } deriving (Eq, Show, Read)
 
 makeLeaf :: a -> BinaryTree a  
 makeLeaf x = Node x EmptyTree EmptyTree  
 
 mapBinaryTree :: (a -> b) -> BinaryTree a -> BinaryTree b
-mapBinaryTree _ Empty = Empty
+mapBinaryTree _ EmptyTree = EmptyTree
 mapBinaryTree f (Node x l r) =
     Node (f x) (mapBinaryTree f l) (mapBinaryTree f r) 
 ```
