@@ -32,7 +32,7 @@
 | -  | Подготовка за първо контролно <br /> [код-от-часа.ep1] — [още-минали-контролни.ep1] |       | 12 | Maybe и Either <br /> [код-от-часа.12]
 | 06 | Матрици. Дървета <br /> [задачи.06] — [решения.06] — [код-от-часа.06] |                     |
 | 07 | Асоциативни списъци. Графи. Потоци <br /> [задачи.07] — [решения.07] — [код-от-часа.07] |   |
-| -  | Допълнителни задачи за списъци <br /> [extra-lists-tasks.md] |                              |
+| -  | Допълнителни задачи за списъци и др. <br /> [extra-tasks.md] |                              |
 
 
 [задачи.01]: 01.scheme.basics/
@@ -68,7 +68,7 @@
 [решения.07]: 07.scheme.assoc-graphs-streams/solutions/
 [код-от-часа.07]: 07.scheme.assoc-graphs-streams/class.07.rkt
 
-[extra-lists-tasks.md]: ../extra-lists-tasks.md
+[extra-tasks.md]: ../extra-tasks.md
 
 [задачи.08]: ./08.haskell.basics
 [решения.08-]: ./08.haskell.basics/solutions
