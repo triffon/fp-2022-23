@@ -15,7 +15,8 @@ module Main where
 -- >>> :k IO
 -- IO :: * -> *
 --
--- (IO a) е действие, което ако бъде извършено ще получим стойност от тип "a"
+-- (IO a) е трансформация,
+-- която ако бъде извършена ще получим стойност от тип "a"
 --
 -- >>> :t getLine
 -- getLine :: IO String
@@ -40,7 +41,7 @@ main = do
 getInt :: IO Int
 getInt = do
   (line :: String) <- (getLine :: IO String)
-  return $ read line -- какъв е типа на return?
+  return (read line :: Int) -- какъв е типа на return?
 
 -- Освен това можем да пишем let <name> = <expression>
 -- за да въведем локална дефиниция.
