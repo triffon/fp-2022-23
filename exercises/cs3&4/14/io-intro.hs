@@ -29,6 +29,7 @@ module Main where
 -- Това ни напомня за main функцията, която сигурно всички са виждали вече.
 -- main функцията е входната точка за програмите на Haskell.
 -- (като "int main()" в C++)
+-- Съответно можем да си компилираме програмата с "ghc io-intro"
 main :: IO ()
 main = do
   putStrLn "Hello Friend"
