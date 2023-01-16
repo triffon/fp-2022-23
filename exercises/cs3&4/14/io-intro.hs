@@ -48,7 +48,7 @@ getInt = do
 -- Вижда че можем да пишем програми в стил по-близък до императивният
 printMyInt :: IO ()
 printMyInt = do
-  n <- getInt
+  (n :: Int) <- (getInt :: IO Int)
   let k = n * n
   print k -- какъв е типа на print?
 
