@@ -4,9 +4,11 @@ getInt :: IO Int
 getInt = do line <- getLine
             return $ read line
 
-readInt :: IO Int
-readInt = do putStrLn "Моля, въведете брой: "
-             getInt
+printRead :: String -> IO Int
+printRead prompt = do putStrLn prompt
+                      getInt
+
+
 
 readAndSum :: Int -> IO Int
 readAndSum 0 = return 0
@@ -15,7 +17,7 @@ readAndSum n = do x <- getInt
                   return $ x + s
 
 findAverage :: IO Double
-findAverage = do n <- readInt
+findAverage = do n <- printRead "Моля, въведете число:"
                  putStrLn $ "Моля, въведете " ++ show n ++ " числа:"
                  s <- readAndSum n
                  return $ fromIntegral s / fromIntegral n
