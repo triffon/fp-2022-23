@@ -72,7 +72,7 @@ surface $ Rectangle 0 0 100 100
   
   ```haskell
   -- тип Car, който се дефинира с компанията, модела и годината си
-  -- не е веднага очевидно се очаква да получи конструкторът
+  -- не е веднага очевидно какво се очаква да получи конструкторът
   data Car = Car String String Int
 
   let car = Car "Ford" "Mustang" 1967  
@@ -202,7 +202,7 @@ data Maybe a = Nothing | Just a
 ```haskell
 data List a = EmptyList | Cons a (List a) deriving (Show, Read, Eq, Ord)  
 
-data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Eq, Show, Read)
+data BinaryTree a = EmptyTree | Node a (BinaryTree a) (BinaryTree a) deriving (Eq, Show, Read)
 ```
 
 ## Двоични дървета
