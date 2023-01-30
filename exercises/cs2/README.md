@@ -35,6 +35,9 @@
 | -  | Допълнителни задачи за списъци и др. <br /> [extra-tasks.md] |                              |
 
 
+[Решения и тестове за контролно 1](./grading/exam1)
+
+
 [задачи.01]: 01.scheme.basics/
 [решения.01]: 01.scheme.basics/solutions.01.rkt
 [код-от-часа.01]: 01.scheme.basics/class.01.rkt
