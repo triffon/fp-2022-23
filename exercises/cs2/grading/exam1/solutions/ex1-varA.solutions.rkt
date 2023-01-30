@@ -53,14 +53,6 @@
                      (filter (lambda (x) (is-unitary-divisor x m))
                                (from-to 1 m)))))
 
-;(commonUnitary 8 140)
-;(filter (lambda (x) (is-unitary-divisor x 140))
-;     (from-to 1 140))
-;(filter (lambda (x) (is-unitary-divisor x 60))
-;     (from-to 1 60))
-;
-;(commonUnitary 60 140)
-
 
 ; problem 3
 (define (selectiveMerge f input-la input-lb)
@@ -87,9 +79,6 @@
       '()
       (cons (car input-la)
             (go rule1 (cdr input-la) (cdr input-lb)))))
-
-;(selectiveMerge * '(1 2 3 4 1 3 1 2) '(10 1 2 0 5 -2 -1 4)) ; → (1 2 6 0 5 3 1 8)
-
 
 ; problem 4
 
