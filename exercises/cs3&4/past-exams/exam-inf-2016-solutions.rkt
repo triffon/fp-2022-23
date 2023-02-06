@@ -73,6 +73,9 @@
 ; Task 3
 ; plant :: (String, Int, Int)
 
+; An aproach this one is to go trough a Cartesian product of all the min and max
+; temperatures, and then see which tuple (min, max) can host the most plants.
+
 ; Get the surviving plants in a temperature range  (minT, maxT)
 (define (survivors plants minT maxT)
   (filter (lambda (p)
